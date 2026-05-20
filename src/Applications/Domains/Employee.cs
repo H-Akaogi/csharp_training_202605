@@ -1,4 +1,4 @@
-/// リスト7-1 ドメインオブジェクト
+/// ドメインオブジェクト
 /// データの意味と振る舞いを定義する
 /// 
 using WebApp_Src.Exceptions;
@@ -50,7 +50,7 @@ public class Employee
     /// <summary>
     /// メールアドレスの検証
     /// </summary>
-    private void ValidateMail(string mailadress)
+    private void ValidateMailAdress(string mailadress)
     {
         if (string.IsNullOrWhiteSpace(mailadress))
             throw new DomainException("メールアドレスは必須です");
@@ -81,7 +81,7 @@ public class Employee
     /// </summary>
     public void ChangeMailAdress(string mailadress)
     {
-        ValidateMail(mailadress);
+        ValidateMailAdress(mailadress);
         Mailadress = mailadress;
     }
     /// <summary>
