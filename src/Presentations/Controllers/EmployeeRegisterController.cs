@@ -1,4 +1,4 @@
-/// リスト10-3 従業員登録コントローラ
+/// 従業員登録コントローラ
 
 
 using Microsoft.AspNetCore.Mvc;

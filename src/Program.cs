@@ -1,10 +1,32 @@
+/// DIコンテナ
+
+using WebApp_Src.Presentations.Extensions;
+
+using WebApp_Src.Presentations.Middlewares;
+var builder = WebApplication.CreateBuilder(args);
+// ControllerやViewの依存関係を構築する
+builder.Services.AddControllersWithViews();
+
+// アプリケーションの依存関係を構築する
+builder.Services.SettingDependencyInjection(builder.Configuration);
+
+var app = builder.Build();
+
+
+/// リスト10-8 InternalException(内部エラー)を処理するMiddleware
+
+// IngternalExceptionをハンドリングするミドルウェアを有効にする
+app.UseMiddleware<InternalExceptionLoggingMiddleware>();
+
+/// 
+/*
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
-
+*/
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

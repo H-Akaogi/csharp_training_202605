@@ -27,11 +27,11 @@ public class EmployeeEntity
     public string EmpName { get; set; } = string.Empty;
 
     /// メールアドレス
-    [Column("mailadress")]
+    [Column("email")]
     public string EmpMailadress { get; set; } = string.Empty;
 
     /// 電話番号
-    [Column("phonenumber")]
+    [Column("phone")]
     public string EmpPhonenumber { get; set; } = string.Empty;
 
 
