@@ -1,0 +1,50 @@
+@*Complete.cshtml(従業員登録の確認画面)*@
+@using WebApp_Src.Presentations.ViewModels
+@model EmployeeRegisterViewModel;
+@{
+    ViewData["Title"] = "従業員登録(完了)";
+}
+<h2 class="text-center mt-4">@ViewData["Title"]</h2>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-sm-8 text-center">
+            <div class="alert alert-success" role="alert">
+                従業員情報の登録が完了しました。
+            </div>
+            <table class="table table-hover">
+                <tbody>
+                    @*登録した従業員と所属部署を表示する*@
+                    <tr>
+                        @*社員名*@
+                        <td class="fw-bold">@Html.DisplayNameFor(m => m.Name)</td>
+                        <td>@Html.DisplayFor(m => m.Name)</td>
+                    </tr>
+                    <tr>
+                        @*メールアドレス*@
+                        <td class="fw-bold">@Html.DisplayNameFor(m => m.Mailadress)</td>
+                        <td>@Html.DisplayFor(m => m.Mailadress)</td>
+
+                    </tr>
+                    <tr>
+                        @*電話番号*@
+                        <td class="fw-bold">@Html.DisplayNameFor(m => m.Phonenumber)</td>
+                        <td>@Html.DisplayFor(m => m.Phonenumber)</td>
+                    </tr>
+                    <tr>
+                        @*部門*@
+                        <td class="fw-bold">@Html.DisplayNameFor(m => m.DeptName)</td>
+                        <td>@Html.DisplayFor(m => m.DeptName)</td>
+                    </tr>
+                </tbody>
+            </table>
+            @*入力画面に戻る*@
+            <a asp-action="Enter" asp-controller="EmployeeRegister" class="btn btn-primary mt-3">
+                続けて登録する
+            </a>
+            @*メニューに戻る*@
+            <a asp-action="Index" asp-controller="Home" class="btn btn-secondary mt-3 ms-2">
+                メニューに戻る
+            </a>
+        </div>
+    </div>
+</div>
