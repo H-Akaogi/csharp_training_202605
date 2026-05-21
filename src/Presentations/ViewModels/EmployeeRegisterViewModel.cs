@@ -16,6 +16,7 @@ public class EmployeeRegisterViewModel
     /// </summary>
     [Display(Name = "氏名")]
     [Required(ErrorMessage = "{0}は入力必須です。")]
+    [StringLength(20, ErrorMessage = "氏名は20文字以内で入力してください。")]
     public string? EmpName { get; set; } = string.Empty;
 
     /// <summary>
@@ -23,6 +24,8 @@ public class EmployeeRegisterViewModel
     /// </summary>
     [Display(Name = "メールアドレス")]
     [Required(ErrorMessage = "{0}は入力必須です。")]
+    [EmailAddress(ErrorMessage = "メールアドレスの形式で入力してください。")]
+    [StringLength(50, ErrorMessage = "メールアドレスは50文字以内で入力してください。")]
     public string? EmpMailadress { get; set; } = string.Empty;
 
     /// <summary>
@@ -30,6 +33,8 @@ public class EmployeeRegisterViewModel
     /// </summary>
     [Display(Name = "電話番号")]
     [Required(ErrorMessage = "{0}は入力必須です。")]
+    [RegularExpression(@"^0\d{1,4}-\d{1,4}-\d{4}$", ErrorMessage = "電話番号の形式（例: 03-1234-5678）で入力してください。")]
+    [StringLength(20, ErrorMessage = "電話番号は20文字以内で入力してください。")]
     public string? EmpPhonenumber { get; set; } = string.Empty;
 
     /// <summary>

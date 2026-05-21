@@ -26,12 +26,14 @@
                     <label asp-for="EmpMailadress" class="form-label"></label>
                     <input asp-for="EmpMailadress" class="form-control" />
                     @*バリデーションエラー*@
+                    <span asp-validation-for="EmpMailadress" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     @*電話番号入力画面*@
                     <label asp-for="EmpPhonenumber" class="form-label"></label>
                     <input asp-for="EmpPhonenumber" class="form-control" />
                     @*バリデーションエラー*@
+                    <span asp-validation-for="EmpPhonenumber" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label asp-for="DeptId" class="form-label"></label>
