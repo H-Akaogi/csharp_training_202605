@@ -8,10 +8,10 @@ namespace WebApp_Src.Applications.Domains;
 /// </summary>
 public class Employee
 {
-    public int? Id { get; private set; } // 社員Id
-    public string Name { get; private set; } = string.Empty; // 氏名
-    public string Mailadress { get; private set; } = string.Empty; // メールアドレス
-    public string Phonenumber { get; private set; } = string.Empty; // 電話番号
+    public int? EmpId { get; private set; } // 社員Id
+    public string EmpName { get; private set; } = string.Empty; // 氏名
+    public string EmpMailadress { get; private set; } = string.Empty; // メールアドレス
+    public string EmpPhonenumber { get; private set; } = string.Empty; // 電話番号
     public Department? Department { get; private set; } // 所属部署（null可）
 
     private const int MaxLength = 20;
@@ -24,10 +24,10 @@ public class Employee
     public Employee(int? id, string name, string mailadress, string phonenumber, Department? department)
     {
         ValidateName(name);
-        Id = id;
-        Name = name;
-        Mailadress = mailadress;
-        Phonenumber = phonenumber;
+        EmpId = id;
+        EmpName = name;
+        EmpMailadress = mailadress;
+        EmpPhonenumber = phonenumber;
         Department = department;
     }
 
@@ -73,7 +73,7 @@ public class Employee
     public void ChangeName(string name)
     {
         ValidateName(name);
-        Name = name;
+        EmpName = name;
     }
 
     /// <summary>
@@ -82,7 +82,7 @@ public class Employee
     public void ChangeMailAdress(string mailadress)
     {
         ValidateMailAdress(mailadress);
-        Mailadress = mailadress;
+        EmpMailadress = mailadress;
     }
     /// <summary>
     /// 電話番号を変更する
@@ -90,7 +90,7 @@ public class Employee
     public void ChangePhoneNumber(string phonenumber)
     {
         ValidatePhoneNumber(phonenumber);
-        Phonenumber = phonenumber;
+        EmpPhonenumber = phonenumber;
     }
     /// <summary>
     /// 所属部署を変更する
@@ -107,11 +107,11 @@ public class Employee
     {
         if (ReferenceEquals(this, obj)) return true;
         if (obj is not Employee other) return false;
-        return Id == other.Id;
+        return EmpId == other.EmpId;
     }
 
-    public override int GetHashCode() => Id?.GetHashCode() ?? 0;
+    public override int GetHashCode() => EmpId?.GetHashCode() ?? 0;
 
     public override string ToString()
-        => $"{Id?.ToString() ?? "未登録"}: {Name}/ {Id?.ToString() ?? "未登録"}: {Mailadress}/ {Id?.ToString() ?? "未登録"}: {Phonenumber} / {Department?.Name ?? "未配属"}";
+        => $"{EmpId?.ToString() ?? "未登録"}: {EmpName},{EmpMailadress},{EmpPhonenumber} / {Department?.Name ?? "未配属"}";
 }

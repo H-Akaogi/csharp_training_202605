@@ -24,13 +24,13 @@ IConverter<Employee, EmployeeEntity>, IRestorer<Employee, EmployeeEntity>
     {
         var entity = new EmployeeEntity
         {
-            EmpName = domain.Name,
-            EmpMailadress = domain.Mailadress,
-            EmpPhonenumber = domain.Phonenumber
+            EmpName = domain.EmpName,
+            EmpMailadress = domain.EmpMailadress,
+            EmpPhonenumber = domain.EmpPhonenumber
         };
-        if (domain.Id != null)
+        if (domain.EmpId != null)
         {
-            entity.EmpId = domain.Id.Value;
+            entity.EmpId = domain.EmpId.Value;
         }
         if (domain.Department != null)
         {
@@ -47,6 +47,9 @@ IConverter<Employee, EmployeeEntity>, IRestorer<Employee, EmployeeEntity>
     public Employee Restore(EmployeeEntity target)
     {
         var employee = new Employee(
+            /*
+            EmpId=target.
+            */
             target.EmpId,
             target.EmpName,
             target.EmpMailadress,

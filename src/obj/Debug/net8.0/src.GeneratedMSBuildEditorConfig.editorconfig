@@ -18,12 +18,12 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /home/fullness/CS_Training/WebApp/csharp_training_202605/src
 build_property._RazorSourceGeneratorDebug = 
 
-[/home/fullness/CS_Training/WebApp/csharp_training_202605/src/Views/EmployeeRegister/Comfirm.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRW1wbG95ZWVSZWdpc3Rlci9Db21maXJtLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [/home/fullness/CS_Training/WebApp/csharp_training_202605/src/Views/EmployeeRegister/Complete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRW1wbG95ZWVSZWdpc3Rlci9Db21wbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/fullness/CS_Training/WebApp/csharp_training_202605/src/Views/EmployeeRegister/Confirm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRW1wbG95ZWVSZWdpc3Rlci9Db25maXJtLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/fullness/CS_Training/WebApp/csharp_training_202605/src/Views/EmployeeRegister/Enter.cshtml]

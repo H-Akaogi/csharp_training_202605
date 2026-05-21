@@ -1,4 +1,4 @@
-/// リスト10-7 DIコンテナ
+/// DIコンテナ
 
 
 using Microsoft.EntityFrameworkCore;

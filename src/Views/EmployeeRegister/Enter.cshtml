@@ -15,22 +15,22 @@
             <form asp-action="Confirm" asp-controller="EmployeeRegister" method="post">
                 <div class="mb-3">
                     @* Tag Helperがname属性やid属性を自動生成 Model Bindingに必要なHTMLが作成される*@
-                    <label asp-for="Name" class="form-label"></label>
-                    <input asp-for="Name" class="form-control" />
+                    <label asp-for="EmpName" class="form-label"></label>
+                    <input asp-for="EmpName" class="form-control" />
                     @*バリデーション(ModelState)エラーを表示する*@
-                    <span asp-validation-for="Name" class="text-danger"></span>
+                    <span asp-validation-for="EmpName" class="text-danger"></span>
                 </div>
                 @*新規作成部分*@
                 <div class="mb-3">
                     @*メールアドレス入力画面*@
-                    <label asp-for="Mailadress" class="form-label"></label>
-                    <input asp-for="Mailadress" class="form-control" />
+                    <label asp-for="EmpMailadress" class="form-label"></label>
+                    <input asp-for="EmpMailadress" class="form-control" />
                     @*バリデーションエラー*@
                 </div>
                 <div class="mb-3">
                     @*電話番号入力画面*@
-                    <label asp-for="Phonenumber" class="form-label"></label>
-                    <input asp-for="Phonenumber" class="form-control" />
+                    <label asp-for="EmpPhonenumber" class="form-label"></label>
+                    <input asp-for="EmpPhonenumber" class="form-control" />
                     @*バリデーションエラー*@
                 </div>
                 <div class="mb-3">

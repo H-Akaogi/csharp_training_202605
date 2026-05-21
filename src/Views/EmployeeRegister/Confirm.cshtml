@@ -13,19 +13,19 @@
                 <tbody>
                     <tr>
                         @*EmployeeRegisterViewModelのNameプロパティの値を表示する*@
-                        <td class="fw-bold">@Html.DisplayNameFor(m => m.Name)</td>
-                        <td>@Html.DisplayFor(m => m.Name)</td>
+                        <td class="fw-bold">@Html.DisplayNameFor(m => m.EmpName)</td>
+                        <td>@Html.DisplayFor(m => m.EmpName)</td>
                     </tr>
                     <tr>
                         @*メールアドレス*@
-                        <td class="fw-bold">@Html.DisplayNameFor(m => m.Mailadress)</td>
-                        <td>@Html.DisplayFor(m => m.Mailadress)</td>
+                        <td class="fw-bold">@Html.DisplayNameFor(m => m.EmpMailadress)</td>
+                        <td>@Html.DisplayFor(m => m.EmpMailadress)</td>
 
                     </tr>
                     <tr>
                         @*電話番号*@
-                        <td class="fw-bold">@Html.DisplayNameFor(m => m.Phonenumber)</td>
-                        <td>@Html.DisplayFor(m => m.Phonenumber)</td>
+                        <td class="fw-bold">@Html.DisplayNameFor(m => m.EmpPhonenumber)</td>
+                        <td>@Html.DisplayFor(m => m.EmpPhonenumber)</td>
                     </tr>
                     <tr>
                         @*EmployeeRegisterViewModelのDeptNameプロパティの値を表示する*@
@@ -38,15 +38,17 @@
             <form>
                 @*POSTリクエスト(Register/Back)に値を渡すためにhidden属性を使う*@
                 @*これがないと、次の画面で値が消えてしまう*@
-                <input type="hidden" asp-for="Name" />
+                <input type="hidden" asp-for="EmpName" />
+                <input type="hidden" asp-for="EmpMailadress" />
+                <input type="hidden" asp-for="EmpPhonenumber" />
                 <input type="hidden" asp-for="DeptId" />
                 <input type="hidden" asp-for="DeptName" />
                 @*formaction/formmethod ボタンごとに送信先を変える*@
                 @*同じフォーム内で[登録]と[戻る]を分岐できる*@
                 <div class="text-center mt-4">
-                    <button type="submit" formaction="@Url.Action(" Register", "EmployeeRegister")" formmethod="post"
+                    <button type="submit" formaction="@Url.Action("Register", "EmployeeRegister")" formmethod="post"
                             class="btn btn-primary">登録</button>
-                    <button type="submit" formaction="@Url.Action(" Back", "EmployeeRegister")" formmethod="post"
+                    <button type="submit" formaction="@Url.Action("Back", "EmployeeRegister")" formmethod="post"
                             class="btn btn-secondary">戻る</button>
                 </div>
             </form>

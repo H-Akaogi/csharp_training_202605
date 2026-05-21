@@ -16,19 +16,22 @@ public class EmployeeRegisterViewModel
     /// </summary>
     [Display(Name = "氏名")]
     [Required(ErrorMessage = "{0}は入力必須です。")]
-    public string? Name { get; set; } = string.Empty;
+    public string? EmpName { get; set; } = string.Empty;
+
     /// <summary>
     /// メールアドレス
     /// </summary>
     [Display(Name = "メールアドレス")]
     [Required(ErrorMessage = "{0}は入力必須です。")]
-    public string? Mailadress { get; set; } = string.Empty;
+    public string? EmpMailadress { get; set; } = string.Empty;
+
     /// <summary>
     /// 電話番号
     /// </summary>
     [Display(Name = "電話番号")]
     [Required(ErrorMessage = "{0}は入力必須です。")]
-    public string? Phonenumber { get; set; } = string.Empty;
+    public string? EmpPhonenumber { get; set; } = string.Empty;
+
     /// <summary>
     /// 所属部署
     /// </summary>
@@ -67,6 +70,6 @@ public class EmployeeRegisterViewModel
 
     public override string ToString()
     {
-        return $"Name={Name} , DeptId={DeptId} , DeptName={DeptName} , Departments={Departments}";
+        return $"EmpName={EmpName} , EmpMailadress={EmpMailadress}, EmpPhonenumber={EmpPhonenumber}, DeptId={DeptId} , DeptName={DeptName} , Departments={Departments}";
     }
 }
