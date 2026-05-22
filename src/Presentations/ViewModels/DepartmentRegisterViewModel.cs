@@ -9,38 +9,39 @@ namespace WebApp_Src.Presentations.ViewModels;
 
 public class DepartmentRegisterViewModel
 {
-    [Display(Name = "部門ID")]
-    public int DeptId { get; set; }
     /// <summary>
     /// 選択された部門名
     /// </summary>
     [Display(Name = "部門名")]
-    public string? DeptName { get; set; }
-    /// <summary>
-    /// 部門のリストをSelectListItemのリストに変換してプロパティに設定する
-    /// </summary>
-    /// <param name="departments"></param>
-    public void SetDepartments(List<Department> departments)
-    {
-        // SelectListItemのリストを作成
-        var selectItems = new List<SelectListItem>();
-        foreach (var dept in departments)
+    [Required(ErrorMessage = "{0}は入力必須です。")]
+    [StringLength(20, ErrorMessage = "部門名は20文字以内で入力してください。")]
+    public string? DeptName { get; set; } = string.Empty;
+    /*
+        /// <summary>
+        /// 部門のリストをSelectListItemのリストに変換してプロパティに設定する
+        /// </summary>
+        /// <param name="departments"></param>
+        public void SetDepartments(List<Department> departments)
         {
-            if (dept.Id.HasValue)
+            // SelectListItemのリストを作成
+            var selectItems = new List<SelectListItem>();
+            foreach (var dept in departments)
             {
-                var item = new SelectListItem();
-                item.Value = dept.Id.Value.ToString();
-                item.Text = string.IsNullOrEmpty(dept.Name) ? "(名称未設定)" : dept.Name;
-                selectItems.Add(item);
+                if (dept.Id.HasValue)
+                {
+                    var item = new SelectListItem();
+                    item.Value = dept.Id.Value.ToString();
+                    item.Text = string.IsNullOrEmpty(dept.Name) ? "(名称未設定)" : dept.Name;
+                    selectItems.Add(item);
+                }
             }
+            Departments = selectItems;
         }
-        Departments = selectItems;
-    }
-    // 部門のリスト
-    public List<SelectListItem>? Departments { get; set; } = null;
-
+        // 部門のリスト
+        public List<SelectListItem>? Departments { get; set; } = null;
+    */
     public override string ToString()
     {
-        return $"DeptId={DeptId} , DeptName={DeptName} , Departments={Departments}";
+        return $"DeptName={DeptName}";
     }
 }

@@ -6,7 +6,7 @@ namespace WebApp_Src.Applications.Services;
 public interface IDepartmentListService
 {
     /// <summary>
-    /// すべての部署を取得する
+    /// すべての部門を取得する
     /// </summary>
     /// <returns></returns>
     List<Department> GetDepartments();

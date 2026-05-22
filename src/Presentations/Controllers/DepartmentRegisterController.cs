@@ -81,21 +81,6 @@ public class DepartmentRegisterController : Controller
             // 入力画面の表示
             return View("Enter", viewModel);
         }
-        /*
-        for(int i = 1; i <= length.DeptId; i++)
-        {
-            if(viewModel.DeptName == DeptName[i])
-            {//バリデーションエラーにしたい
-            ;}
-        }
-        /*
-
-        // 選択された部門のIdで部門データを取得する
-        var department = _departmentRegisterService.GetById(viewModel.DeptId ?? 0);
-        _logger.LogInformation($"部門Id:{viewModel.DeptId ?? 0}の部門を取得する");
-        */
-        // ViewModelに部門名を設定する
-        //viewModel.DeptName = department.Name;
         // 確認画面を表示する
         return View(viewModel);
     }
@@ -132,7 +117,7 @@ public class DepartmentRegisterController : Controller
         }
         // DepartmentRegisterFormをドメインモデル:Departmentに変換する
         var department = _adapter.Restore(viewModel!);
-        // 新しい従業員を登録する
+        // 新しい部門を登録する
         _departmentRegisterService.Register(department);
         return View(viewModel);
     }
