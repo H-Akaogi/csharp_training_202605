@@ -61,7 +61,7 @@ public class EmployeeRegisterService : IEmployeeRegisterService
     /// <returns></returns>
     public List<Department> GetDepartments()
     {
-        return _departmentRepository.FindAll();
+        return _departmentRepository.GetAll();
     }
 
     /// <summary>

@@ -35,7 +35,7 @@ public class DepartmentRepository : IDepartmentRepository
     /// すべての部署を取得する
     /// </summary>
     /// <returns>部署のリスト</returns>
-    public List<Department> FindAll()
+    public List<Department> GetAll()
     {
         try
         {

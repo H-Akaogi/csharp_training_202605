@@ -11,7 +11,7 @@ public interface IDepartmentRepository
     /// すべての部署を取得する
     /// </summary>
     /// <returns>部署のリスト</returns>
-    List<Department> FindAll();
+    List<Department> GetAll();
 
     /// <summary>
     /// 指定された部署Idの部署を取得する
