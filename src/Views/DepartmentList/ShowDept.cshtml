@@ -11,23 +11,28 @@
 <div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-4 col-sm-6">
-            @* 送信先はControllerのConfirm()、POSTは入力値を送信する*@
+            @* 表形式で表示*@
             <table class="table table-hover">
                 <thread>
                     <tr>
+                        @*左の列名*@
                         <th>
                             部門ID
                         </th>
+                        @*右の列名*@
                         <th>
                             部門名
                         </th>
                     </tr>
                 </thread>
                 <tbody>
+                    @*ViewModelよりとってきたDepartmentsデータを表へ格納*@
                     @foreach (var dept in Model.Departments)
                     {
                         <tr>
+                            @*左列は数値(DeptId)*@
                             <td>@dept.Value</td>
+                            @*右列はテキスト(DeptName)*@
                             <td>@dept.Text</td>
                         </tr>
                     }

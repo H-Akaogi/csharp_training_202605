@@ -1,6 +1,5 @@
 /// 部門一覧コントローラ
 
-
 using Microsoft.AspNetCore.Mvc;
 using WebApp_Src.Applications.Services;
 using WebApp_Src.Presentations.ViewModels;
@@ -21,10 +20,6 @@ public class DepartmentListController : Controller
     /// ViewModelをEmployeeに変換するアダプター
     /// </summary>
     private readonly DepartmentListViewModelAdapter _adapter;
-    /// <summary>
-    /// TempDataを通じて一時的にViewModelを保存・復元するためのクラス
-    /// </summary>
-    //private readonly TempDataStore<DepartmentListViewModel> _depDataStore;//★未作成
 
     /// <summary>
     /// コンストラクタ
@@ -55,22 +50,6 @@ public class DepartmentListController : Controller
         // viewModelをviewに渡して画面表示する
         return View(viewModel);
     }
-
-    /// <summary>
-    /// 確認画面の[戻る]ボタンクリックアクションメソッド
-    /// </summary>
-    /// <returns></returns> 
-    [HttpPost("Back")]
-    public IActionResult Back(DepartmentListViewModel viewModel)
-    {
-        /*
-        _logger.LogInformation("[戻る]ボタンクリック:{0}", viewModel!.ToString());
-        // DepartmentListViewModelをシリアライズして、TempDataに保存する
-        _deptDataStore.Save(this, viewModel);
-        // 入力画面を出力するアクションメソッドにリダイレクトする*/
-        return RedirectToAction("Home");
-    }
-
     /// <summary>
     /// 部署一覧を取得してViewModelに設定する(SelectListItem形式)
     /// </summary>

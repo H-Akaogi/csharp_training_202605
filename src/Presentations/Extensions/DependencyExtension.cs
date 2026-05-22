@@ -88,6 +88,7 @@ public static class DependencyExtension
             provider =>
             new TempDataStore<EmployeeRegisterViewModel>("EmployeeRegisterViewModel")
         );
+
         // 部門一覧ViewModelをドメインオブジェクト:部門に変換するアダプターインターフェイスの実装
         services.AddScoped<DepartmentListViewModelAdapter>();
         // TempDataへのDepartmentListViewの保存・復元するためのクラス
@@ -96,6 +97,7 @@ public static class DependencyExtension
             provider =>
             new TempDataStore<DepartmentListViewModel>("DepartmentListViewModel")
         );
+        // 部門一覧Serviceをドメインオブジェクト:部門に変換するアダプターインターフェイスの実装
         services.AddScoped<IDepartmentListService, DepartmentListService>();
     }
 }
