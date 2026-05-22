@@ -60,5 +60,10 @@ public class DepartmentListController : Controller
         // 部署一覧をDepartmentListViewModelに登録する
         viewModel.SetDepartments(departments);
         _logger.LogInformation("部署リストを設定");
+
+        /*あとでやること:以下に変更
+        var departments = _departmentListService.GetDepartments();
+        viewModel.ListDepartments(departments)
+        */
     }
 }

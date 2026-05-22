@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using WebApp_Src.Applications.Domains;
 namespace WebApp_Src.Presentations.ViewModels;
 /// <summary>
-/// 部署登録ViewModelクラス
+/// 部門登録ViewModelクラス
 /// </summary>
 public class EmployeeRegisterViewModel
 {
@@ -38,20 +38,20 @@ public class EmployeeRegisterViewModel
     public string? EmpPhonenumber { get; set; } = string.Empty;
 
     /// <summary>
-    /// 所属部署
+    /// 所属部門
     /// </summary>
-    [Display(Name = "所属部署")]
+    [Display(Name = "所属部門")]
     [Required(ErrorMessage = "{0}は選択必須です。")]
     public int? DeptId { get; set; } = 0;
 
     /// <summary>
-    /// 選択された部署名
+    /// 選択された部門名
     /// </summary>
-    [Display(Name = "部署名")]
+    [Display(Name = "部門名")]
     public string? DeptName { get; set; } = string.Empty;
 
     /// <summary>
-    /// 部署のリストをSelectListItemのリストに変換してプロパティに設定する
+    /// 部門のリストをSelectListItemのリストに変換してプロパティに設定する
     /// </summary>
     /// <param name="departments"></param>
     public void SetDepartments(List<Department> departments)
@@ -70,7 +70,7 @@ public class EmployeeRegisterViewModel
         }
         Departments = selectItems;
     }
-    // 部署のリスト
+    // 部門のリスト
     public List<SelectListItem>? Departments { get; set; } = null;
 
     public override string ToString()

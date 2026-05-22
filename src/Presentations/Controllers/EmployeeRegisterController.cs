@@ -63,7 +63,7 @@ public class EmployeeRegisterController : Controller
             // 従業員登録ViewModelを生成する
             viewModel = new EmployeeRegisterViewModel();
         }
-        // 部署一覧を取得してViewModelに設定する(SelectListItem形式)
+        // 部門一覧を取得してViewModelに設定する(SelectListItem形式)
         PopulateDepartments(viewModel);
         // viewModelをviewに渡して画面表示する
         return View(viewModel);
@@ -80,15 +80,15 @@ public class EmployeeRegisterController : Controller
         // バリデーションチェック
         if (!ModelState.IsValid) // バリデーションエラーあり
         {
-            // 部署一覧を取得してViewModelに設定する(SelectListItem形式)
+            // 部門一覧を取得してViewModelに設定する(SelectListItem形式)
             PopulateDepartments(viewModel);
             // 入力画面の表示
             return View("Enter", viewModel);
         }
-        // 選択された部署のIdで部署データを取得する
+        // 選択された部門のIdで部門データを取得する
         var department = _employeeRegisterService.GetById(viewModel.DeptId ?? 0);
-        _logger.LogInformation($"部署Id:{viewModel.DeptId ?? 0}の部署を取得する");
-        // ViewModelに部署名を設定する
+        _logger.LogInformation($"部門Id:{viewModel.DeptId ?? 0}の部門を取得する");
+        // ViewModelに部門名を設定する
         viewModel.DeptName = department.Name;
         // 確認画面を表示する
         return View(viewModel);
@@ -146,14 +146,14 @@ public class EmployeeRegisterController : Controller
     }
 
     /// <summary>
-    /// 部署一覧を取得してViewModelに設定する(SelectListItem形式)
+    /// 部門一覧を取得してViewModelに設定する(SelectListItem形式)
     /// </summary>
     private void PopulateDepartments(EmployeeRegisterViewModel viewModel)
     {
-        // 従業員登録サービスから部署一覧を取得する
+        // 従業員登録サービスから部門一覧を取得する
         var departments = _employeeRegisterService.GetDepartments();
-        // 部署一覧をEmployeeRegisterViewModelに登録する
+        // 部門一覧をEmployeeRegisterViewModelに登録する
         viewModel.SetDepartments(departments);
-        _logger.LogInformation("部署リストを設定");
+        _logger.LogInformation("部門リストを設定");
     }
 }

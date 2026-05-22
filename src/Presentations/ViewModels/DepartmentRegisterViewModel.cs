@@ -7,11 +7,15 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using WebApp_Src.Applications.Domains;
 namespace WebApp_Src.Presentations.ViewModels;
 
-public class DepartmentListViewModel
+public class DepartmentRegisterViewModel
 {
+    [Display(Name = "部門ID")]
     public int DeptId { get; set; }
+    /// <summary>
+    /// 選択された部門名
+    /// </summary>
+    [Display(Name = "部門名")]
     public string? DeptName { get; set; }
-
     /// <summary>
     /// 部門のリストをSelectListItemのリストに変換してプロパティに設定する
     /// </summary>
@@ -35,26 +39,8 @@ public class DepartmentListViewModel
     // 部門のリスト
     public List<SelectListItem>? Departments { get; set; } = null;
 
-    /*
-    あとでやること：以下に変更
-    
-        public void ListDepartments(List<Department> departments)
+    public override string ToString()
     {
-        // SelectListItemのリストを作成
-        var allDepartments = new List<DeptListItem>();
-        foreach (var dept in departments)
-        {
-            if (dept.Id.HasValue)
-            {
-                var item = new DeptListItem();
-                item.Value = dept.Id.Value.ToString();
-                item.Text = string.IsNullOrEmpty(dept.Name) ? "(名称未設定)" : dept.Name;
-                allDepartments.Add(item);
-            }
-        }
-        Departments = allDepartments;
+        return $"DeptId={DeptId} , DeptName={DeptName} , Departments={Departments}";
     }
-    // 部門のリスト
-    public List<DeptListItem>? Departments { get; set; } = null;
-    */
 }

@@ -38,6 +38,12 @@ public class DepartmentRegisterService : IDepartmentRegisterService
     /// </summary>
     public void Register(Department department)
     {
+        //存在する場合のExistsExceptionエラー
+        var result = _departmentRepository.GetAll();
+        if (result != null)
+        {
+            throw new ExistsException($"部門名{department}は既に存在します");
+        }
         try
         {
             // トランザクションの開始

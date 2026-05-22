@@ -18,7 +18,7 @@ public class EmployeeRegisterViewModelAdapter : IRestorer<Employee, EmployeeRegi
     /// <returns>ドメインオブジェクト:Employee</returns>
     public Employee Restore(EmployeeRegisterViewModel target)
     {
-        // Department(部署)を作成する
+        // Department(部門)を作成する
         var department = new Department(target.DeptId!.Value, target.DeptName);
         // 登録するEmployee(従業員)を作成する
         var employee = new Employee(target.EmpName!, target.EmpMailadress!, target.EmpPhonenumber!, department);
