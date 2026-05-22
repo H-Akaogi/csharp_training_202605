@@ -55,7 +55,7 @@ public class DepartmentListController : Controller
     /// </summary>
     private void PopulateDepartments(DepartmentListViewModel viewModel)
     {
-        // 従業員登録サービスから部署一覧を取得する
+        // 社員登録サービスから部署一覧を取得する
         var departments = _departmentListService.GetDepartments();
         // 部署一覧をDepartmentListViewModelに登録する
         viewModel.SetDepartments(departments);

@@ -4,7 +4,7 @@ using WebApp_Src.Applications.Adapters;
 using WebApp_Src.Applications.Domains;
 namespace WebApp_Src.Presentations.ViewModels;
 /// <summary>
-/// EmployeeRegisterViewModel(従業員登録ViewModel)を
+/// EmployeeRegisterViewModel(社員登録ViewModel)を
 /// ドメインオブジェクト:Employeeに変換するアダプターインターフェイスの実装
 /// </summary>
 /// <typeparam name="TDomain">Employee</typeparam>
@@ -20,7 +20,7 @@ public class EmployeeRegisterViewModelAdapter : IRestorer<Employee, EmployeeRegi
     {
         // Department(部門)を作成する
         var department = new Department(target.DeptId!.Value, target.DeptName);
-        // 登録するEmployee(従業員)を作成する
+        // 登録するEmployee(社員)を作成する
         var employee = new Employee(target.EmpName!, target.EmpMailadress!, target.EmpPhonenumber!, department);
         return employee;
     }

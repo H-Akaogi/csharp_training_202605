@@ -1,0 +1,45 @@
+@* ShowDept.cshtml*@
+@* クラスの名前空間を指定する(C#と同じ) *@
+@using WebApp_Src.Presentations.ViewModels
+@* View が受け取るデータ型（ViewModel）を宣言asp-for はこの型のプロパティと結びつける *@
+@model List<EmployeeListViewModel>
+@{
+    ViewData["Title"] = "社員一覧";
+}
+<h2 class="text-center mt-4">@ViewData["Title"]</h2>
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-4 col-sm-6">
+            @* 表形式で表示*@
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>氏名</th>
+                        <th>メールアドレス</th>
+                        <th>電話番号</th>
+                        <th>部門</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.EmpName</td>
+                            <td>@item.EmpMailadress</td>
+                            <td>@item.EmpPhonenumber</td>
+                            <td>@item.DeptName</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            @* メニューに戻る *@
+            <a asp-action="Index" asp-controller="Home" class="btn btn-secondary mt-3 ms-2">メニューに戻る</a>
+
+        </div>
+
+    </div>
+</div>
+</div>

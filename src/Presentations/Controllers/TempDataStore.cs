@@ -1,4 +1,4 @@
-/// 従業員登録コントローラ
+/// 社員登録コントローラ
 
 using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;

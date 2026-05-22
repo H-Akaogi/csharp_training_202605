@@ -81,6 +81,22 @@ public class DepartmentRegisterController : Controller
             // 入力画面の表示
             return View("Enter", viewModel);
         }
+        /*
+                // 同一商品チェック(商品名で重複判定)
+        var name = viewModel.Name?.Trim() ?? string.Empty;
+        try
+        {
+            _service.Exists(name);
+        }
+        catch (ExistsException e)
+        {
+            // 商品名フィールドにエラーメッセージを追加
+            ModelState.AddModelError(nameof(viewModel.Name), e.Message);
+            // SelectListItemを再設定して入力画面へ戻す
+            PopulateCategories(viewModel);
+            return View("Enter", viewModel);
+        }
+        */
         // 確認画面を表示する
         return View(viewModel);
     }
