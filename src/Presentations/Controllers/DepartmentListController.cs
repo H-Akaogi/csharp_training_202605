@@ -49,30 +49,11 @@ public class DepartmentListController : Controller
     [HttpGet("ShowDept")]
     public IActionResult ShowDept()
     {
-        //var departments = _departmentListService.GetDepartments();
-
-        //var list = new List<Department>();
-
-        //DepartmentListViewModel? viewModel = null;
         var viewModel = new DepartmentListViewModel();
-        PopulateDepartments(viewModel);
-        return View(viewModel);
-        /*List<Department> GetDepartments();
-        var list = new List<Department>();
-
-        DepartmentListViewModel? viewModel = null;
-        // [戻る]ボタンへの対応
-        viewModel = _deptDataStore.Load(this);
-        if (viewModel == null)
-        {
-            // ViewModelを生成する
-            viewModel = new DepartmentListViewModel();
-        }
         // 部署一覧を取得してViewModelに設定する(SelectListItem形式)
         PopulateDepartments(viewModel);
         // viewModelをviewに渡して画面表示する
-        return View(viewModel); */
-
+        return View(viewModel);
     }
 
     /// <summary>
@@ -87,7 +68,7 @@ public class DepartmentListController : Controller
         // DepartmentListViewModelをシリアライズして、TempDataに保存する
         _deptDataStore.Save(this, viewModel);
         // 入力画面を出力するアクションメソッドにリダイレクトする*/
-        return RedirectToAction("ShowDept");
+        return RedirectToAction("Home");
     }
 
     /// <summary>

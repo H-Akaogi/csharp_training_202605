@@ -12,11 +12,32 @@
     <div class="row justify-content-center">
         <div class="col-md-4 col-sm-6">
             @* 送信先はControllerのConfirm()、POSTは入力値を送信する*@
-            <table class="table table-hover" asp-action="ShowDept" asp-controller="DepartmentList" method="get">
+            <table class="table table-hover">
+                <thread>
+                    <tr>
+                        <th>
+                            部門ID
+                        </th>
+                        <th>
+                            部門名
+                        </th>
+                    </tr>
+                </thread>
+                <tbody>
+                    @foreach (var dept in Model.Departments)
+                    {
+                        <tr>
+                            <td>@dept.Value</td>
+                            <td>@dept.Text</td>
+                        </tr>
+                    }
+                </tbody>
             </table>
-            <div class="text-center">
-                <button type="submit" formaction="@Url.Action("Back", "Home")" formmethod="post"
-                        class="btn btn-secondary">戻る</button>
+
+            <div class="text-center mt-3">
+                <form asp-action="Back" asp-controller="DepartmentList" method="post">
+                    <button type="submit" class="btn btn-secondary">戻る</button>
+                </form>
             </div>
 
         </div>
