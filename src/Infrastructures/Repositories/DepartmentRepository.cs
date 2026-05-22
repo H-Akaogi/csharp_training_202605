@@ -76,6 +76,15 @@ public class DepartmentRepository : IDepartmentRepository
                 "指定された部門Idの部門を取得できませんでした。", e);
         }
     }
+    public Department? FindByName(string name)
+    {
+        var result = _context.Departments.FirstOrDefault(d => d.DeptName == name);
+        if (result == null)
+        {
+            return null;
+        }
+        return _adapter.Restore(result);
+    }
     /// <summary>
     /// 部門を永続化する
     /// </summary>

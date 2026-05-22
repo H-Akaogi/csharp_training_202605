@@ -17,6 +17,7 @@ public interface IDepartmentRepository
     /// 指定された部門Idの部門を取得する
     /// </summary>
     Department? FindById(int id);
+    Department? FindByName(string name);
     /// <summary>
     /// 部門を永続化する
     /// </summary>
