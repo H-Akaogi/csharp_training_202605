@@ -14,7 +14,7 @@ public class DepartmentListService : IDepartmentListService
     private readonly AppDbContext _context;
 
     /// <summary>
-    /// ドメインオブジェクト:部署のCRUD操作インターフェイス
+    /// ドメインオブジェクト:部門のCRUD操作インターフェイス
     /// </summary>
     private readonly IDepartmentRepository _departmentRepository;
 
@@ -29,7 +29,7 @@ public class DepartmentListService : IDepartmentListService
         _departmentRepository = departmentRepository;
     }
     /// <summary>
-    /// すべての部署を取得する
+    /// すべての部門を取得する
     /// </summary>
     /// <returns></returns>
     public List<Department> GetDepartments()

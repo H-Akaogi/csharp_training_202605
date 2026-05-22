@@ -5,20 +5,13 @@ using WebApp_Src.Applications.Domains;
 using WebApp_Src.Exceptions;
 using WebApp_Src.Infrastructures.Context;
 namespace WebApp_Src.Applications.Services.Impls;
-/// <summary>
-/// 従業員登録サービスインターフェイスの実装
-/// </summary>
-public class EmployeeRegisterService : IEmployeeRegisterService
-{
 
+public class DepartmentRegisterService : IDepartmentRegisterService
+{
     /// <summary>
     /// アプリケーション用DbContext
     /// </summary>
     private readonly AppDbContext _context;
-    /// <summary>
-    /// ドメインオブジェクト:従業員のCRUD操作インターフェイス
-    /// </summary>
-    private readonly IEmployeeRepository _employeeRepository;
     /// <summary>
     /// ドメインオブジェクト:部門のCRUD操作インターフェイス
     /// </summary>
@@ -28,54 +21,29 @@ public class EmployeeRegisterService : IEmployeeRegisterService
     /// コンストラクタ
     /// </summary>
     /// <param name="context">アプリケーション用DbContext</param>
-    /// <param name="employeeRepository">従業員のCRUD操作インターフェイス</param>
-    /// <param name="departmentRepository">部門のCRUD操作インターフェイス</param>
-    public EmployeeRegisterService(
+    public DepartmentRegisterService(
         AppDbContext context,
-        IEmployeeRepository employeeRepository,
         IDepartmentRepository departmentRepository)
     {
         _context = context;
-        _employeeRepository = employeeRepository;
         _departmentRepository = departmentRepository;
     }
-
-    /// <summary>
-    /// 指定された部門Idの部門を取得する
-    /// </summary>
-    /// <param name="id">部門Id</param>
-    /// <returns></returns>
-    public Department GetById(int id)
-    {
-        var result = _departmentRepository.FindById(id)!;
-        if (result == null)
-        {
-            throw new NotFoundException($"部門Id{id}に該当する部門は存在しません");
-        }
-        return result;
-    }
-
-    /// <summary>
-    /// すべての部門を取得する
-    /// </summary>
-    /// <returns></returns>
+    // すべての部門の取得
     public List<Department> GetDepartments()
     {
         return _departmentRepository.GetAll();
     }
-
     /// <summary>
-    /// 新しい従業員を登録する
+    /// 新しい部門を登録する
     /// </summary>
-    /// <param name="employee"></param>
-    public void Register(Employee employee)
+    public void Register(Department department)
     {
         try
         {
             // トランザクションの開始
             _context.Database.BeginTransaction();
-            // 従業員の登録
-            _employeeRepository.Create(employee);
+            // 部門の登録
+            _departmentRepository.Create(department);
             // トランザクションのコミット
             _context.Database.CommitTransaction();
         }

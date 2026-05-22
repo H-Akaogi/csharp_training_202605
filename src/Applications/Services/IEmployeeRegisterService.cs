@@ -8,15 +8,15 @@ namespace WebApp_Src.Applications.Services;
 public interface IEmployeeRegisterService
 {
     /// <summary>
-    /// すべての部署を取得する
+    /// すべての部門を取得する
     /// </summary>
     /// <returns></returns>
     List<Department> GetDepartments();
 
     /// <summary>
-    /// 指定された部署Idの部署を取得する
+    /// 指定された部門Idの部門を取得する
     /// </summary>
-    /// <param name="id">部署Id</param>
+    /// <param name="id">部門Id</param>
     /// <returns></returns>
     Department GetById(int id);
 
