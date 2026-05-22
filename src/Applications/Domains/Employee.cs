@@ -12,7 +12,7 @@ public class Employee
     public string EmpName { get; private set; } = string.Empty; // 氏名
     public string EmpMailadress { get; private set; } = string.Empty; // メールアドレス
     public string EmpPhonenumber { get; private set; } = string.Empty; // 電話番号
-    public Department? Department { get; private set; } // 所属部署（null可）
+    public Department? Department { get; private set; } // 所属部門（null可）
 
     private const int MaxLength = 20;
     private const int MaxLengthMail = 50;
@@ -93,7 +93,7 @@ public class Employee
         EmpPhonenumber = phonenumber;
     }
     /// <summary>
-    /// 所属部署を変更する
+    /// 所属部門を変更する
     /// </summary>
     public void ChangeDepartment(Department? department)
     {

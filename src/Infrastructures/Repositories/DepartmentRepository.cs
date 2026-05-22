@@ -12,7 +12,7 @@ using WebApp_Src.Infrastructures.Adapters;
 using WebApp_Src.Exceptions;
 namespace WebApp_Src.Infrastructures.Repositories;
 /// <summary>
-/// ドメインオブジェクト:部署のCRUD操作インターフェイス実装
+/// ドメインオブジェクト:部門のCRUD操作インターフェイス実装
 /// </summary>
 public class DepartmentRepository : IDepartmentRepository
 {
@@ -21,7 +21,7 @@ public class DepartmentRepository : IDepartmentRepository
     /// </summary>
     private readonly AppDbContext _context;
     /// <summary>
-    /// ドメインモデル:部署と部署エンティティの相互変換インターフェイスの実装
+    /// ドメインモデル:部門と部門エンティティの相互変換インターフェイスの実装
     /// </summary>
     private readonly DepartmentEntityAdapter _adapter;
 
@@ -32,9 +32,9 @@ public class DepartmentRepository : IDepartmentRepository
     }
 
     /// <summary>
-    /// すべての部署を取得する
+    /// すべての部門を取得する
     /// </summary>
-    /// <returns>部署のリスト</returns>
+    /// <returns>部門のリスト</returns>
     public List<Department> GetAll()
     {
         try
@@ -50,15 +50,15 @@ public class DepartmentRepository : IDepartmentRepository
         catch (Exception e)
         {
             throw new InternalException(
-                "すべての部署を取得できませんでした。", e);
+                "すべての部門を取得できませんでした。", e);
         }
     }
 
     /// <summary>
-    /// 指定された部署Idの部署を取得する
+    /// 指定された部門Idの部門を取得する
     /// </summary>
-    /// <param name="id">部署Id</param>
-    /// <returns>取得して部署</returns>
+    /// <param name="id">部門Id</param>
+    /// <returns>取得して部門</returns>
     public Department? FindById(int id)
     {
         try
@@ -73,7 +73,24 @@ public class DepartmentRepository : IDepartmentRepository
         catch (Exception e)
         {
             throw new InternalException(
-                "指定された部署Idの部署を取得できませんでした。", e);
+                "指定された部門Idの部門を取得できませんでした。", e);
+        }
+    }
+    /// <summary>
+    /// 部門を永続化する
+    /// </summary>
+    public void Create(Department department)
+    {
+        try
+        {
+            var entity = _adapter.Convert(department);
+            _context.Departments.Add(entity);
+            _context.SaveChanges();
+        }
+        catch (Exception e)
+        {
+            throw new InternalException(
+                "部門の永続化ができませんでした。", e);
         }
     }
 }
