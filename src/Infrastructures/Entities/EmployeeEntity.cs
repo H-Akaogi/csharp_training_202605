@@ -7,13 +7,13 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace WebApp_Src.Infrastructures.Entities;
 /// <summary>
-/// 従業員テーブル(employee)を扱うEntity Framework Coreのエンティティクラス
+/// 社員テーブル(employee)を扱うEntity Framework Coreのエンティティクラス
 /// </summary>
 [Table("employee")]
 public class EmployeeEntity
 {
     /// <summary>
-    /// 従業員Id(主キー)
+    /// 社員Id(主キー)
     /// </summary>
     [Key]
     [Column("id")]
@@ -21,7 +21,7 @@ public class EmployeeEntity
 
 
     /// <summary>
-    /// 従業員名
+    /// 社員名
     /// </summary>
     [Column("name")]
     public string EmpName { get; set; } = string.Empty;

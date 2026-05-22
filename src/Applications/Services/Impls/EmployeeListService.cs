@@ -8,9 +8,8 @@ namespace WebApp_Src.Applications.Services.Impls;
 /// <summary>
 /// 社員登録サービスインターフェイスの実装
 /// </summary>
-public class EmployeeRegisterService : IEmployeeRegisterService
+public class EmployeeListService : IEmployeeListService
 {
-
     /// <summary>
     /// アプリケーション用DbContext
     /// </summary>
@@ -30,7 +29,7 @@ public class EmployeeRegisterService : IEmployeeRegisterService
     /// <param name="context">アプリケーション用DbContext</param>
     /// <param name="employeeRepository">社員のCRUD操作インターフェイス</param>
     /// <param name="departmentRepository">部門のCRUD操作インターフェイス</param>
-    public EmployeeRegisterService(
+    public EmployeeListService(
         AppDbContext context,
         IEmployeeRepository employeeRepository,
         IDepartmentRepository departmentRepository)
@@ -39,22 +38,14 @@ public class EmployeeRegisterService : IEmployeeRegisterService
         _employeeRepository = employeeRepository;
         _departmentRepository = departmentRepository;
     }
-
     /// <summary>
-    /// 指定された部門Idの部門を取得する
+    /// すべての社員を取得する
     /// </summary>
-    /// <param name="id">部門Id</param>
     /// <returns></returns>
-    public Department GetById(int id)
+    public List<Employee> GetEmployees()
     {
-        var result = _departmentRepository.FindById(id)!;
-        if (result == null)
-        {
-            throw new NotFoundException($"部門Id{id}に該当する部門は存在しません");
-        }
-        return result;
+        return _employeeRepository.GetAll();
     }
-
     /// <summary>
     /// すべての部門を取得する
     /// </summary>
@@ -62,28 +53,5 @@ public class EmployeeRegisterService : IEmployeeRegisterService
     public List<Department> GetDepartments()
     {
         return _departmentRepository.GetAll();
-    }
-
-    /// <summary>
-    /// 新しい社員を登録する
-    /// </summary>
-    /// <param name="employee"></param>
-    public void Register(Employee employee)
-    {
-        try
-        {
-            // トランザクションの開始
-            _context.Database.BeginTransaction();
-            // 社員の登録
-            _employeeRepository.Create(employee);
-            // トランザクションのコミット
-            _context.Database.CommitTransaction();
-        }
-        catch
-        {
-            // トランザクションのロールバック
-            _context.Database.RollbackTransaction();
-            throw;
-        }
     }
 }

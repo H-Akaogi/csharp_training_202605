@@ -12,7 +12,7 @@ using WebApp_Src.Infrastructures.Adapters;
 using WebApp_Src.Exceptions;
 namespace WebApp_Src.Infrastructures.Repositories;
 /// <summary>
-/// ドメインオブジェクト:従業員のCRUD操作インターフェイスの実装
+/// ドメインオブジェクト:社員のCRUD操作インターフェイスの実装
 /// </summary>
 public class EmployeeRepository : IEmployeeRepository
 {
@@ -21,7 +21,7 @@ public class EmployeeRepository : IEmployeeRepository
     /// </summary>
     private readonly AppDbContext _context;
     /// <summary>
-    /// ドメインモデル:従業員と従業員エンティティの相互変換インターフェイスの実装
+    /// ドメインモデル:社員と社員エンティティの相互変換インターフェイスの実装
     /// </summary>
     private readonly EmployeeEntityAdapter _adapter;
 
@@ -37,9 +37,9 @@ public class EmployeeRepository : IEmployeeRepository
     }
 
     /// <summary>
-    /// 従業員を永続化する
+    /// 社員を永続化する
     /// </summary>
-    /// <param name="employee">永続化対象の従業員</param>
+    /// <param name="employee">永続化対象の社員</param>
     public void Create(Employee employee)
     {
         try
@@ -51,7 +51,25 @@ public class EmployeeRepository : IEmployeeRepository
         catch (Exception e)
         {
             throw new InternalException(
-                "従業員の永続化ができませんでした。", e);
+                "社員の永続化ができませんでした。", e);
+        }
+    }
+    public List<Employee> GetAll()
+    {
+        try
+        {
+            var entities = _context.Employees.ToList();
+            var results = new List<Employee>();
+            foreach (var entity in entities)
+            {
+                results.Add(_adapter.Restore(entity));
+            }
+            return results;
+        }
+        catch (Exception e)
+        {
+            throw new InternalException(
+                "すべての社員を取得できませんでした。", e);
         }
     }
 }

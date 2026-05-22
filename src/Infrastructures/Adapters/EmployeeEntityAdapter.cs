@@ -18,7 +18,7 @@ IConverter<Employee, EmployeeEntity>, IRestorer<Employee, EmployeeEntity>
     /// <summary>
     /// ドメインオブジェクト:EmployeeをEmployeeEntityに変換する
     /// </summary>
-    /// <param name="domain">ドメインモデル:従業員</param>
+    /// <param name="domain">ドメインモデル:社員</param>
     /// <returns>EmployeeEntity</returns>
     public EmployeeEntity Convert(Employee domain)
     {

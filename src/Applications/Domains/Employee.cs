@@ -4,7 +4,7 @@
 using WebApp_Src.Exceptions;
 namespace WebApp_Src.Applications.Domains;
 /// <summary>
-/// 従業員を表すドメインオブジェクト
+/// 社員を表すドメインオブジェクト
 /// </summary>
 public class Employee
 {

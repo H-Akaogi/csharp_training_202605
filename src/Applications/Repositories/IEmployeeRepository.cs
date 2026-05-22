@@ -3,13 +3,17 @@
 using WebApp_Src.Applications.Domains;
 namespace WebApp_Src.Applications.Repositories;
 /// <summary>
-/// ドメインオブジェクト:従業員のCRUD操作インターフェイス
+/// ドメインオブジェクト:社員のCRUD操作インターフェイス
 /// </summary>
 public interface IEmployeeRepository
 {
     /// <summary>
-    /// 従業員を永続化する
+    /// すべての社員を取得する
     /// </summary>
-    /// <param name="employee">永続化対象の従業員</param>
+    List<Employee> GetAll();
+    /// <summary>
+    /// 社員を永続化する
+    /// </summary>
+    /// <param name="employee">永続化対象の社員</param>
     void Create(Employee employee);
 }
