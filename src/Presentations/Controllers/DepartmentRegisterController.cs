@@ -1,9 +1,11 @@
 /// 部門登録コントローラ
-
+using WebApp_Src.Exceptions;
+using WebApp_Src.Applications.Services.Impls;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 using WebApp_Src.Applications.Services;
 using WebApp_Src.Presentations.ViewModels;
+using System.ComponentModel.Design;
 namespace WebApp_Src.Presentations.Controllers;
 
 [Route("DepartmentRegister")]
@@ -76,28 +78,15 @@ public class DepartmentRegisterController : Controller
         // バリデーションチェック
         if (!ModelState.IsValid) // バリデーションエラーあり
         {
-            // 部門一覧を取得してViewModelに設定する(SelectListItem形式)
-            //PopulateDepartments(viewModel);
             // 入力画面の表示
             return View("Enter", viewModel);
         }
-        /*
-                // 同一商品チェック(商品名で重複判定)
-        var name = viewModel.Name?.Trim() ?? string.Empty;
-        try
+        if (_departmentRegisterService.Exists(viewModel.DeptName))
         {
-            _service.Exists(name);
-        }
-        catch (ExistsException e)
-        {
-            // 商品名フィールドにエラーメッセージを追加
-            ModelState.AddModelError(nameof(viewModel.Name), e.Message);
-            // SelectListItemを再設定して入力画面へ戻す
-            PopulateCategories(viewModel);
+            ModelState.AddModelError(nameof(viewModel.DeptName),
+            $"{viewModel.DeptName}は既に存在します");
             return View("Enter", viewModel);
         }
-        */
-        // 確認画面を表示する
         return View(viewModel);
     }
 
@@ -151,14 +140,4 @@ public class DepartmentRegisterController : Controller
         // 入力画面を出力するアクションメソッドにリダイレクトする
         return RedirectToAction("Enter");
     }
-    /*
-        /// <summary>
-        /// 部門一覧を取得してViewModelに設定する(SelectListItem形式)
-        /// </summary>
-        private void PopulateDepartments(DepartmentRegisterViewModel viewModel)
-        {
-            // 部門一覧をDepartmentRegisterViewModelに登録する
-            viewModel.SetDepartments(departments);
-            _logger.LogInformation("部門リストを設定");
-        }*/
 }

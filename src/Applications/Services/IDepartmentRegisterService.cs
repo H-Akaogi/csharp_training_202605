@@ -10,7 +10,7 @@ public interface IDepartmentRegisterService
     /// </summary>
     /// <returns></returns>
     List<Department> GetDepartments();
-    void EnsureNotExists(string name);
+    bool Exists(string name);
     /// <summary>
     /// 新しい部門を登録する
     /// </summary>

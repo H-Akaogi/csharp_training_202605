@@ -54,6 +54,24 @@ public class EmployeeRepository : IEmployeeRepository
                 "社員の永続化ができませんでした。", e);
         }
     }
+    public Employee? FindByMail(string mail)
+    {
+        var result = _context.Employees.FirstOrDefault(e => e.EmpMailadress == mail);
+        if (result == null)
+        {
+            return null;
+        }
+        return _adapter.Restore(result);
+    }
+    public Employee? FindByPhone(string phone)
+    {
+        var result = _context.Employees.FirstOrDefault(e => e.EmpPhonenumber == phone);
+        if (result == null)
+        {
+            return null;
+        }
+        return _adapter.Restore(result);
+    }
     public List<Employee> GetAll()
     {
         try

@@ -85,6 +85,20 @@ public class EmployeeRegisterController : Controller
             // 入力画面の表示
             return View("Enter", viewModel);
         }
+        if (_employeeRegisterService.ExistsMail(viewModel.EmpMailadress))
+        {
+            ModelState.AddModelError(nameof(viewModel.EmpMailadress),
+            $"入力されたメールアドレスは既に存在します");
+            PopulateDepartments(viewModel);
+            return View("Enter", viewModel);
+        }
+        if (_employeeRegisterService.ExistsPhone(viewModel.EmpPhonenumber))
+        {
+            ModelState.AddModelError(nameof(viewModel.EmpPhonenumber),
+            $"入力された電話番号は既に存在します");
+            PopulateDepartments(viewModel);
+            return View("Enter", viewModel);
+        }
         // 選択された部門のIdで部門データを取得する
         var department = _employeeRegisterService.GetById(viewModel.DeptId ?? 0);
         _logger.LogInformation($"部門Id:{viewModel.DeptId ?? 0}の部門を取得する");

@@ -16,4 +16,6 @@ public interface IEmployeeRepository
     /// </summary>
     /// <param name="employee">永続化対象の社員</param>
     void Create(Employee employee);
+    Employee? FindByMail(string mail);
+    Employee? FindByPhone(string phone);
 }

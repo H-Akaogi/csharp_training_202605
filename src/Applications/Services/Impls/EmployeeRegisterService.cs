@@ -86,4 +86,13 @@ public class EmployeeRegisterService : IEmployeeRegisterService
             throw;
         }
     }
+    // 重複確認
+    public bool ExistsMail(string mail)
+    {
+        return _employeeRepository.FindByMail(mail) != null;
+    }
+    public bool ExistsPhone(string phone)
+    {
+        return _employeeRepository.FindByPhone(phone) != null;
+    }
 }

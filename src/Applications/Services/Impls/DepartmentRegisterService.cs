@@ -33,14 +33,9 @@ public class DepartmentRegisterService : IDepartmentRegisterService
     {
         return _departmentRepository.GetAll();
     }
-    public void EnsureNotExists(string name)
+    public bool Exists(string name)
     {
-        var exists = _departmentRepository.FindByName(name);
-
-        if (exists != null)
-        {
-            throw new ExistsException($"部門名{name}は既に存在します");
-        }
+        return _departmentRepository.FindByName(name) != null;
     }
     /// <summary>
     /// 新しい部門を登録する
@@ -51,7 +46,7 @@ public class DepartmentRegisterService : IDepartmentRegisterService
         {
             // トランザクションの開始
             _context.Database.BeginTransaction();
-            EnsureNotExists(department.Name!);
+            //Exists(department.Name!);
             // 部門の登録
             _departmentRepository.Create(department);
             // トランザクションのコミット

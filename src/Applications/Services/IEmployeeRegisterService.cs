@@ -19,6 +19,11 @@ public interface IEmployeeRegisterService
     /// <param name="id">部門Id</param>
     /// <returns></returns>
     Department GetById(int id);
+    /// <summary>
+    /// 重複確認
+    /// </summary>
+    bool ExistsMail(string mail);
+    bool ExistsPhone(string phone);
 
     /// <summary>
     /// 新しい社員を登録する
