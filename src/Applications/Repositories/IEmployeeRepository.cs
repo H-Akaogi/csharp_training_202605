@@ -18,4 +18,5 @@ public interface IEmployeeRepository
     void Create(Employee employee);
     Employee? FindByMail(string mail);
     Employee? FindByPhone(string phone);
+    Employee? DeleteById(int id);
 }

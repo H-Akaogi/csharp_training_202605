@@ -50,6 +50,8 @@
                         <th>メールアドレス</th>
                         <th>電話番号</th>
                         <th>部門</th>
+                        <th>更新</th>
+                        <th>削除</th>
                     </tr>
                 </thead>
 
@@ -61,6 +63,16 @@
                             <td>@item.EmpMailadress</td>
                             <td>@item.EmpPhonenumber</td>
                             <td>@item.DeptName</td>
+                            <td>
+                                <button type="submit" class="btn btn-primary" asp-controller="UpdateEmployee"
+                                        asp-action="Confirm" formaction="@Url.Action("Confirm", "UpdateEmployee")"
+                                        data-btn="@item.EmpId">更新</button>
+                            </td>
+                            <td>
+                                <button type="submit" class="btn btn-primary" asp-controller="DeleteEmployee"
+                                        asp-action="Confirm" formaction="@Url.Action("Confirm", "DeleteEmployee")"
+                                        data-btn="@item.EmpId">削除</button>
+                            </td>
                         </tr>
                     }
                 </tbody>

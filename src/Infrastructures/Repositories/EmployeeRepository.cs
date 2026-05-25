@@ -54,6 +54,21 @@ public class EmployeeRepository : IEmployeeRepository
                 "社員の永続化ができませんでした。", e);
         }
     }
+    // 削除
+    public Employee? DeleteById(int id)
+    {
+        try
+        {
+            var entity = _context.Employees.Single(e => e.EmpId == id);
+            _context.Employees.Remove(entity);
+            return _adapter.Restore(entity);
+        }
+        catch (Exception e)
+        {
+            throw new InternalException(
+                "社員の削除ができませんでした。", e);
+        }
+    }
     public Employee? FindByMail(string mail)
     {
         var result = _context.Employees.FirstOrDefault(e => e.EmpMailadress == mail);

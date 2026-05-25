@@ -1,0 +1,50 @@
+@*DeleteEmp.cshtml(社員削除の確認画面)*@
+@using WebApp_Src.Presentations.ViewModels
+@model DeleteEmployeeViewModel;
+@{
+    ViewData["Title"] = "社員削除(完了)";
+}
+<h2 class="text-center mt-4">@ViewData["Title"]</h2>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-sm-8 text-center">
+            <div class="alert alert-success" role="alert">
+                社員情報の削除が完了しました。
+            </div>
+            <table class="table table-hover">
+                <tbody>
+                    @*削除した社員と所属部署を表示する*@
+                    <tr>
+                        @*社員名*@
+                        <td class="fw-bold">@Html.DisplayNameFor(m => m.EmpName)</td>
+                        <td>@Html.DisplayFor(m => m.EmpName)</td>
+                    </tr>
+                    <tr>
+                        @*メールアドレス*@
+                        <td class="fw-bold">@Html.DisplayNameFor(m => m.EmpMailadress)</td>
+                        <td>@Html.DisplayFor(m => m.EmpMailadress)</td>
+
+                    </tr>
+                    <tr>
+                        @*電話番号*@
+                        <td class="fw-bold">@Html.DisplayNameFor(m => m.EmpPhonenumber)</td>
+                        <td>@Html.DisplayFor(m => m.EmpPhonenumber)</td>
+                    </tr>
+                    <tr>
+                        @*部門*@
+                        <td class="fw-bold">@Html.DisplayNameFor(m => m.DeptName)</td>
+                        <td>@Html.DisplayFor(m => m.DeptName)</td>
+                    </tr>
+                </tbody>
+            </table>
+            @*一覧画面に戻る*@
+            <a asp-action="ShowEmp" asp-controller="EmployeeList" class="btn btn-primary mt-3">
+                社員一覧に戻る
+            </a>
+            @*メニューに戻る*@
+            <a asp-action="Index" asp-controller="Home" class="btn btn-secondary mt-3 ms-2">
+                メニューに戻る
+            </a>
+        </div>
+    </div>
+</div>

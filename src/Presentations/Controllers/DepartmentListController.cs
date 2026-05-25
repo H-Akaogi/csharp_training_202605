@@ -27,14 +27,11 @@ public class DepartmentListController : Controller
     public DepartmentListController(
         ILogger<DepartmentListController> logger,
         IDepartmentListService departmentListService,
-        DepartmentListViewModelAdapter departmentListViewModelAdapter/*,
-        TempDataStore<DepartmentListViewModel> deptDataStore*/)
+        DepartmentListViewModelAdapter departmentListViewModelAdapter)
     {
         _logger = logger;
         _departmentListService = departmentListService;
         _adapter = departmentListViewModelAdapter;
-        /*_deptDataStore = deptDataStore*/
-        ;
     }
 
     /// <summary>
