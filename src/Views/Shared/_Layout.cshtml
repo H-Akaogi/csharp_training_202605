@@ -14,28 +14,43 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">src</a>
+                @*タイトル*@
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    社員・部門管理システム
+                </a>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
+
+                        @*ホームボタン*@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
+
+                        @*社員登録ボタン*@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="EmployeeRegister"
                                asp-action="Enter">社員登録</a>
                         </li>
+
+                        @*部門一覧ボタン*@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="DepartmentList"
                                asp-action="ShowDept">部門一覧</a>
                         </li>
+
+                        @*部門登録ボタン*@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="DepartmentRegister"
                                asp-action="Enter">部門登録</a>
                         </li>
+
+                        @*社員一覧ボタン*@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="EmployeeList"
                                asp-action="ShowEmp">社員一覧</a>

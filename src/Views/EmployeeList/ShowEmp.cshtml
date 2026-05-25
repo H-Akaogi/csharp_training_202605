@@ -10,12 +10,43 @@
 
 <div class="container mt-4">
     <div class="row justify-content-center">
-        <div class="col-md-4 col-sm-6">
-            @* 表形式で表示*@
-            <table class="table">
+        @*<div class="col-md-4 col-sm-6">*@
+        @* 表形式で表示*@
+        <style>
+                    .table-emp {
+                        width: 100%;
+                        border-collapse: collapse;
+                    }
+
+                    .table-emp tr {
+                        background-color: #fff;
+                        border: 1px solid #bbb;
+                        padding: .35em;
+                    }
+
+                    .table-emp th,
+                    td {
+                        padding: 1em 10px 1em 1em;
+                        border-right: 1px solid #bbb;
+                    }
+
+                    .table-emp th {
+                        background-color: #eee;
+                    }
+
+                    .emp-name {
+                        font-weight: bold;
+                    }
+
+                    .table-emp td {
+                        white-space: nowrap;
+                    }
+        </style>
+        <figure class="wp-block-table is-style-stripes">
+            <table class="table-emp">
                 <thead>
                     <tr>
-                        <th>氏名</th>
+                        <th class="emp-name">氏名</th>
                         <th>メールアドレス</th>
                         <th>電話番号</th>
                         <th>部門</th>
@@ -26,7 +57,7 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>@item.EmpName</td>
+                            <td class="emp-name">@item.EmpName</td>
                             <td>@item.EmpMailadress</td>
                             <td>@item.EmpPhonenumber</td>
                             <td>@item.DeptName</td>
@@ -34,11 +65,11 @@
                     }
                 </tbody>
             </table>
+        </figure>
+        @* メニューに戻る *@
+        <a asp-action="Index" asp-controller="Home" class="btn btn-secondary mt-3 ms-2">メニューに戻る</a>
 
-            @* メニューに戻る *@
-            <a asp-action="Index" asp-controller="Home" class="btn btn-secondary mt-3 ms-2">メニューに戻る</a>
-
-        </div>
+        @*</div>*@
 
     </div>
 </div>
