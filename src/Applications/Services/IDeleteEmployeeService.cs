@@ -8,4 +8,5 @@ namespace WebApp_Src.Applications.Services;
 public interface IDeleteEmployeeService
 {
     void Delete(int id);
+    Employee GetById(int id);
 }

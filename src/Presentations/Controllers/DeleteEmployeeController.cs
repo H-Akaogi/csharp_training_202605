@@ -2,6 +2,7 @@ using WebApp_Src.Infrastructures.Context;
 using Microsoft.AspNetCore.Mvc;
 using WebApp_Src.Applications.Services;
 using WebApp_Src.Presentations.ViewModels;
+using Microsoft.VisualBasic;
 namespace WebApp_Src.Presentations.Controllers;
 
 [Route("DeleteEmployee")]
@@ -41,76 +42,64 @@ public class DeleteEmployeeController : Controller
         _empDataStore = empDataStore;
         _context = context;
     }
-    [HttpPost("Confirm")]
-    public IActionResult Confirm(DeleteEmployeeViewModel viewModel)
+    // 社員リスト横の[削除]ボタンを押下→確認画面
+    [HttpGet("Confirm/{id}")]
+    public IActionResult Confirm(int id)
     {
-        // バリデーションチェック
-        if (!ModelState.IsValid) // バリデーションエラーあり
+        var employee = _deleteEmployeeService.GetById(id);
+        /*var viewModel = new EmployeeListViewModel();
+        
+                var list = (
+                    from e in _context.Employees
+                    join d in _context.Departments
+                    on e.DeptId equals d.DeptId
+                    select new EmployeeListViewModel
+                    {
+                        EmpId = id,
+                        EmpName = e.EmpName,
+                        EmpMailadress = e.EmpMailadress,
+                        EmpPhonenumber = e.EmpPhonenumber,
+                        DeptName = d.DeptName
+                    }
+                ).ToList()
+                ;
+                var viewModel = list;
+                */
+        var viewModel = new DeleteEmployeeViewModel
         {
-            // 入力画面の表示
-            return View("Enter", viewModel);
-        }
-        // 選択された部門のIdで部門データを取得する
-        var employee = _deleteEmployeeService.DeleteById(viewModel.EmpId ?? 0);
-        _logger.LogInformation($"部門Id:{viewModel.EmpId ?? 0}の社員を取得する");
-        // ViewModelに部門名を設定する
-        viewModel.EmpName = employee.EmpName;
+            EmpId = id,
+            EmpName = employee.EmpName,
+            EmpMailadress = employee.EmpMailadress,
+            EmpPhonenumber = employee.EmpPhonenumber,
+            //DeptName = employee.Department?.DeptName
+        };
 
-        var viewModel = new DeleteEmployeeViewModel();
-
-        var list = (
-            from e in _context.Employees
-            join d in _context.Departments
-            on e.DeptId equals d.DeptId
-            select new DeleteEmployeeViewModel
-            {
-                EmpId = e.EmpId,
-                EmpName = e.EmpName,
-                EmpMailadress = e.EmpMailadress,
-                EmpPhonenumber = e.EmpPhonenumber,
-                DeptName = d.DeptName
-            }
-        ).ToList()
-        ;
-        // 確認画面を表示する
         return View(viewModel);
     }
+    // 確認画面で[削除]ボタンを押下→削除完了画面
     [HttpPost("Delete")]
     public IActionResult Delete(DeleteEmployeeViewModel viewModel)
     {
-        // EmployeeRegisterViewModelをシリアライズして、TempDataに保存する
+        _deleteEmployeeService.Delete(viewModel.EmpId);
+
         _empDataStore.Save(this, viewModel);
-        // 登録処理GETアクションメソッドにリダイレクトする
+
         return RedirectToAction("Complete");
     }
 
-    /// <summary>
-    /// アクションメソッド:Regiter()のリダイレクト先
-    /// PRGパターン
-    /// </summary>
-    /// <returns></returns>
     [HttpGet("Complete")]
     public IActionResult Complete()
     {
-        DeleteEmployeeViewModel? viewModel = null;
-        // TempDataからEmployeeRegisterViewModelを取得する
-        viewModel = _empDataStore.Load(this);
+        var viewModel = _empDataStore.Load(this);
+
         if (viewModel == null)
-        {
-            // データが存在しない場合、入力画面にリダイレクト
-            return RedirectToAction("Enter");
-        }
-        // EmployeeRegisterFormをドメインモデル:Employeeに変換する
-        var employee = _adapter.Restore(viewModel!);
-        // 新しい社員を登録する
-        _deleteEmployeeService.Delete(employee);
+            return RedirectToAction("ShowEmp");
+
         return View(viewModel);
     }
 
-    /// <summary>
-    /// 確認画面の[戻る]ボタンクリックアクションメソッド
-    /// </summary>
-    /// <returns></returns> 
+
+    // 確認画面で[戻る]ボタンを押下
     [HttpPost("Back")]
     public IActionResult Back(DeleteEmployeeViewModel viewModel)
     {
@@ -118,6 +107,6 @@ public class DeleteEmployeeController : Controller
         // EmployeeRegisterViewModelをシリアライズして、TempDataに保存する
         _empDataStore.Save(this, viewModel);
         // 入力画面を出力するアクションメソッドにリダイレクトする
-        return RedirectToAction("Enter");
+        return RedirectToAction("ShowEmp");
     }
 }

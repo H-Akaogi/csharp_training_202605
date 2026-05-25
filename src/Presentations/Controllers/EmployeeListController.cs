@@ -1,5 +1,6 @@
 /// 社員一覧コントローラ
 
+using WebApp_Src.Infrastructures.Entities;
 using WebApp_Src.Infrastructures.Context;
 using Microsoft.AspNetCore.Mvc;
 using WebApp_Src.Applications.Services;
@@ -60,6 +61,7 @@ public class EmployeeListController : Controller
             on e.DeptId equals d.DeptId
             select new EmployeeListViewModel
             {
+                EmpId = e.EmpId,
                 EmpName = e.EmpName,
                 EmpMailadress = e.EmpMailadress,
                 EmpPhonenumber = e.EmpPhonenumber,

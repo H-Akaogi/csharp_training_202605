@@ -30,6 +30,15 @@ public class DeleteEmployeeService : IDeleteEmployeeService
         _employeeRepository = employeeRepository;
         _departmentRepository = departmentRepository;
     }
+    public Employee GetById(int id)
+    {
+        var result = _employeeRepository.FindById(id)!;
+        if (result == null)
+        {
+            throw new NotFoundException($"社員Id:{id}に該当する社員は存在しません");
+        }
+        return result;
+    }
     public void Delete(int id)
     {
         try

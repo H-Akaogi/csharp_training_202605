@@ -5,6 +5,7 @@
 /// 永続化ロジック（CRUD操作）を集約
 /// ドメイン層とデータアクセス層の分離
 /// 
+using Microsoft.EntityFrameworkCore;
 using WebApp_Src.Infrastructures.Context;
 using WebApp_Src.Applications.Domains;
 using WebApp_Src.Applications.Repositories;
@@ -67,6 +68,25 @@ public class EmployeeRepository : IEmployeeRepository
         {
             throw new InternalException(
                 "社員の削除ができませんでした。", e);
+        }
+    }
+    public Employee? FindById(int id)
+    {
+        try
+        {
+            var result = _context.Employees
+            .Include(e => e.Department)
+            .FirstOrDefault(d => d.EmpId == id);
+            if (result == null)
+            {
+                return null;
+            }
+            return _adapter.Restore(result);
+        }
+        catch (Exception e)
+        {
+            throw new InternalException(
+                "指定された社員Idの社員を取得できませんでした。", e);
         }
     }
     public Employee? FindByMail(string mail)

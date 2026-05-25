@@ -18,6 +18,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /home/fullness/CS_Training/WebApp/csharp_training_202605/src
 build_property._RazorSourceGeneratorDebug = 
 
+[/home/fullness/CS_Training/WebApp/csharp_training_202605/src/Views/DeleteEmployee/Complete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGVsZXRlRW1wbG95ZWUvQ29tcGxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/fullness/CS_Training/WebApp/csharp_training_202605/src/Views/DeleteEmployee/Confirm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGVsZXRlRW1wbG95ZWUvQ29uZmlybS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/fullness/CS_Training/WebApp/csharp_training_202605/src/Views/DepartmentList/ShowDept.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGVwYXJ0bWVudExpc3QvU2hvd0RlcHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -32,14 +40,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/home/fullness/CS_Training/WebApp/csharp_training_202605/src/Views/DepartmentRegister/Enter.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGVwYXJ0bWVudFJlZ2lzdGVyL0VudGVyLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[/home/fullness/CS_Training/WebApp/csharp_training_202605/src/Views/DleteEmployee/Complete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGxldGVFbXBsb3llZS9Db21wbGV0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[/home/fullness/CS_Training/WebApp/csharp_training_202605/src/Views/DleteEmployee/Confirm.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGxldGVFbXBsb3llZS9Db25maXJtLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/fullness/CS_Training/WebApp/csharp_training_202605/src/Views/EmployeeList/ShowEmp.cshtml]

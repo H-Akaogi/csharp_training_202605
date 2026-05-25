@@ -46,6 +46,7 @@
             <table class="table-emp">
                 <thead>
                     <tr>
+                        <th>ID</th>
                         <th class="emp-name">氏名</th>
                         <th>メールアドレス</th>
                         <th>電話番号</th>
@@ -59,19 +60,22 @@
                     @foreach (var item in Model)
                     {
                         <tr>
+                            <td>@item.EmpId</td>
                             <td class="emp-name">@item.EmpName</td>
                             <td>@item.EmpMailadress</td>
                             <td>@item.EmpPhonenumber</td>
                             <td>@item.DeptName</td>
                             <td>
-                                <button type="submit" class="btn btn-primary" asp-controller="UpdateEmployee"
-                                        asp-action="Confirm" formaction="@Url.Action("Confirm", "UpdateEmployee")"
-                                        data-btn="@item.EmpId">更新</button>
+                                <a class="btn btn-primary" asp-controller="UpdateEmployee" asp-action="Confirm"
+                                   asp-route-id="@item.EmpId">
+                                    更新
+                                </a>
                             </td>
                             <td>
-                                <button type="submit" class="btn btn-primary" asp-controller="DeleteEmployee"
-                                        asp-action="Confirm" formaction="@Url.Action("Confirm", "DeleteEmployee")"
-                                        data-btn="@item.EmpId">削除</button>
+                                <a class="btn btn-primary" asp-controller="DeleteEmployee" asp-action="Confirm"
+                                   asp-route-id="@item.EmpId">
+                                    削除
+                                </a>
                             </td>
                         </tr>
                     }

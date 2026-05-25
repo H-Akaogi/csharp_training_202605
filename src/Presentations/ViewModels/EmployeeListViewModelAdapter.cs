@@ -11,7 +11,7 @@ public class EmployeeListViewModelAdapter : IRestorer<Employee, EmployeeListView
         // Department(部門)を作成する
         var department = new Department(target.DeptId!, target.DeptName);
         // 登録するEmployee(社員)を作成する
-        var employee = new Employee(target.EmpName!, target.EmpMailadress!, target.EmpPhonenumber!, department);
+        var employee = new Employee(target.EmpId!, target.EmpName!, target.EmpMailadress!, target.EmpPhonenumber!, department);
         return employee;
     }
 }

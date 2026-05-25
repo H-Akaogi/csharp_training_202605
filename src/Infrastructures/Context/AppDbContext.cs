@@ -3,7 +3,7 @@
 /// エンティティの変更追跡（Change Tracking）
 /// クエリ実行および結果のマッピング
 /// SaveChangesによる永続化処理の統括
-
+using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using WebApp_Src.Infrastructures.Entities;
 namespace WebApp_Src.Infrastructures.Context;
@@ -28,4 +28,15 @@ public class AppDbContext : DbContext
     /// </param>
     /// <returns></returns>
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<EmployeeEntity>()
+            .HasOne(e => e.Department)
+            .WithMany(d => d.Employees)
+            .HasForeignKey(e => e.DeptId)
+            .OnDelete(DeleteBehavior.Restrict);
+    }
 }

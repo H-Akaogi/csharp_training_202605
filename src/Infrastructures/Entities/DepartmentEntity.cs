@@ -24,4 +24,5 @@ public class DepartmentEntity
     /// </summary> 
     [Column("name")]
     public string DeptName { get; set; } = string.Empty;
+    public ICollection<EmployeeEntity> Employees { get; set; }
 }
