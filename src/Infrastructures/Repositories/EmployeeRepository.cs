@@ -124,5 +124,19 @@ public class EmployeeRepository : IEmployeeRepository
         return entities.Select(e => _employeeAdapter.Restore(e)).ToList();
     }
 
+    public void Update(Employee employee)
+    {
+        try
+        {
+            var entity = _employeeAdapter.Convert(employee);
+            _context.Employees.Update(entity);
+            _context.SaveChanges();
+        }
+        catch (Exception e)
+        {
+            throw new InternalException(
+                "社員の永続化ができませんでした。", e);
+        }
+    }
 }
 

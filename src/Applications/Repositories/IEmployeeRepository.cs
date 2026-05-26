@@ -19,5 +19,5 @@ public interface IEmployeeRepository
     Employee? FindByPhone(string phone);
     Employee? DeleteById(int id);
     Employee? FindById(int id);
-
+    void Update(Employee employee);
 }
