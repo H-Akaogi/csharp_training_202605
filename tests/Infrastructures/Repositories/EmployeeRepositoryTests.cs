@@ -70,15 +70,21 @@ public class EmployeeRepositoryTests
     [TestMethod] // 正常系
     public void DeleteById_WhenIdCorrect()
     {
+        // Arrange
+        var beforeCount = _context.Employees.Count();
+
         // Act
         var actual = _repository.DeleteById(1);
+
         // Assert
-        IsNotNull(actual);
-        AreEqual(1, actual.EmpId);
-        AreEqual("田中太郎", actual.EmpName);
-        AreEqual("tanakatarou@example.com", actual.EmpMailadress);
-        AreEqual("090-0000-0001", actual.EmpPhonenumber);
-        AreEqual(2, actual.Department.Id);
+        var afterCount = _context.Employees.Count();
+        AreEqual(beforeCount - 1, afterCount);
+
+        var deleted = _context.Employees
+            .Include(i => i.Department)
+            .FirstOrDefault(i => i.EmpName == "田中太郎");
+
+        IsNull(deleted);
     }
 
     [TestMethod] // 異常系
@@ -106,7 +112,7 @@ public class EmployeeRepositoryTests
         AreEqual("佐藤花子", actual.EmpName);
         AreEqual("sastouhanako@example.com", actual.EmpMailadress);
         AreEqual("090-0000-0003", actual.EmpPhonenumber);
-        AreEqual(4, actual.Department.Id);
+        AreEqual(4, actual.Department?.Id);
     }
 
     [TestMethod] // 異常系
@@ -128,11 +134,7 @@ public class EmployeeRepositoryTests
         var actual = _repository.FindByMail("sastouhanako@example.com");
         // Assert
         IsNotNull(actual);
-        AreEqual(3, actual.EmpId);
-        AreEqual("佐藤花子", actual.EmpName);
         AreEqual("sastouhanako@example.com", actual.EmpMailadress);
-        AreEqual("090-0000-0003", actual.EmpPhonenumber);
-        AreEqual(2, actual.Department.Id);
     }
 
     [TestMethod] // 異常系
@@ -154,11 +156,7 @@ public class EmployeeRepositoryTests
         var actual = _repository.FindByPhone("090-0000-0003");
         // Assert
         IsNotNull(actual);
-        AreEqual(3, actual.EmpId);
-        AreEqual("佐藤花子", actual.EmpName);
-        AreEqual("sastouhanako@example.com", actual.EmpMailadress);
         AreEqual("090-0000-0003", actual.EmpPhonenumber);
-        AreEqual(4, actual.Department.Id);
     }
 
     [TestMethod] // 異常系

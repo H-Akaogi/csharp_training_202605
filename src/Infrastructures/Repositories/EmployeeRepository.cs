@@ -77,6 +77,7 @@ public class EmployeeRepository : IEmployeeRepository
                 "社員の削除ができませんでした。", e);
         }
     }
+
     public Employee? FindById(int id)
     {
         try
