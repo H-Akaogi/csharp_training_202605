@@ -34,27 +34,4 @@ public class DepartmentListViewModel
     }
     // 部門のリスト
     public List<SelectListItem>? Departments { get; set; } = null;
-
-    /*
-    あとでやること：以下に変更
-    
-        public void ListDepartments(List<Department> departments)
-    {
-        // SelectListItemのリストを作成
-        var allDepartments = new List<DeptListItem>();
-        foreach (var dept in departments)
-        {
-            if (dept.Id.HasValue)
-            {
-                var item = new DeptListItem();
-                item.Value = dept.Id.Value.ToString();
-                item.Text = string.IsNullOrEmpty(dept.Name) ? "(名称未設定)" : dept.Name;
-                allDepartments.Add(item);
-            }
-        }
-        Departments = allDepartments;
-    }
-    // 部門のリスト
-    public List<DeptListItem>? Departments { get; set; } = null;
-    */
 }

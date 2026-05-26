@@ -56,12 +56,14 @@ public class EmployeeRepository : IEmployeeRepository
         }
     }
     // 削除
+    // ここが違そう
     public Employee? DeleteById(int id)
     {
         try
         {
             var entity = _context.Employees.Single(e => e.EmpId == id);
             _context.Employees.Remove(entity);
+            _context.SaveChanges();
             return _adapter.Restore(entity);
         }
         catch (Exception e)
@@ -109,20 +111,12 @@ public class EmployeeRepository : IEmployeeRepository
     }
     public List<Employee> GetAll()
     {
-        try
-        {
-            var entities = _context.Employees.ToList();
-            var results = new List<Employee>();
-            foreach (var entity in entities)
-            {
-                results.Add(_adapter.Restore(entity));
-            }
-            return results;
-        }
-        catch (Exception e)
-        {
-            throw new InternalException(
-                "すべての社員を取得できませんでした。", e);
-        }
+        var entities = _context.Employees
+            .Include(e => e.Department)
+            .ToList();
+
+        return entities.Select(e => _adapter.Restore(e)).ToList();
     }
+
 }
+

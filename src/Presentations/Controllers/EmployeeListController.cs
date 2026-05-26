@@ -53,25 +53,18 @@ public class EmployeeListController : Controller
     [HttpGet("ShowEmp")]
     public IActionResult ShowEmp()
     {
-        var viewModel = new EmployeeListViewModel();
+        var employees = _employeeListService.GetEmployees();
 
-        var list = (
-            from e in _context.Employees
-            join d in _context.Departments
-            on e.DeptId equals d.DeptId
-            select new EmployeeListViewModel
-            {
-                EmpId = e.EmpId,
-                EmpName = e.EmpName,
-                EmpMailadress = e.EmpMailadress,
-                EmpPhonenumber = e.EmpPhonenumber,
-                DeptName = d.DeptName
-            }
-        ).ToList()
-        ;
+        var list = employees.Select(employee => new EmployeeListViewModel
+        {
+            EmpId = employee.EmpId,
+            EmpName = employee.EmpName,
+            EmpMailadress = employee.EmpMailadress,
+            EmpPhonenumber = employee.EmpPhonenumber,
+            DeptName = employee.Department?.Name
+
+        }).ToList();
 
         return View(list);
-
     }
-
 }

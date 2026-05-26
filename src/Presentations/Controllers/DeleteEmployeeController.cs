@@ -1,3 +1,5 @@
+
+using WebApp_Src.Infrastructures.Entities;
 using WebApp_Src.Infrastructures.Context;
 using Microsoft.AspNetCore.Mvc;
 using WebApp_Src.Applications.Services;
@@ -47,33 +49,14 @@ public class DeleteEmployeeController : Controller
     public IActionResult Confirm(int id)
     {
         var employee = _deleteEmployeeService.GetById(id);
-        /*var viewModel = new EmployeeListViewModel();
-        
-                var list = (
-                    from e in _context.Employees
-                    join d in _context.Departments
-                    on e.DeptId equals d.DeptId
-                    select new EmployeeListViewModel
-                    {
-                        EmpId = id,
-                        EmpName = e.EmpName,
-                        EmpMailadress = e.EmpMailadress,
-                        EmpPhonenumber = e.EmpPhonenumber,
-                        DeptName = d.DeptName
-                    }
-                ).ToList()
-                ;
-                var viewModel = list;
-                */
         var viewModel = new DeleteEmployeeViewModel
         {
             EmpId = id,
             EmpName = employee.EmpName,
             EmpMailadress = employee.EmpMailadress,
             EmpPhonenumber = employee.EmpPhonenumber,
-            //DeptName = employee.Department?.DeptName
+            DeptName = employee.Department?.Name
         };
-
         return View(viewModel);
     }
     // 確認画面で[削除]ボタンを押下→削除完了画面

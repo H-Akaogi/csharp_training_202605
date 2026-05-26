@@ -1,5 +1,5 @@
 /// Repositoryインターフェイス
-
+//using WebApp_Src.Presentations.ViewModels;
 using WebApp_Src.Applications.Domains;
 namespace WebApp_Src.Applications.Repositories;
 /// <summary>
@@ -20,4 +20,5 @@ public interface IEmployeeRepository
     Employee? FindByPhone(string phone);
     Employee? DeleteById(int id);
     Employee? FindById(int id);
+
 }

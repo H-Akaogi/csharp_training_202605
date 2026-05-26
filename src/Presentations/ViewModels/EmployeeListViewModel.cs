@@ -11,7 +11,7 @@ namespace WebApp_Src.Presentations.ViewModels;
 /// </summary>
 public class EmployeeListViewModel
 {
-    public int EmpId { get; set; }
+    public int? EmpId { get; set; }
     public string? EmpName { get; set; }
     public string? EmpMailadress { get; set; }
     public string? EmpPhonenumber { get; set; }

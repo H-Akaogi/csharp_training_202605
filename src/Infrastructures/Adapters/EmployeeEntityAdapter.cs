@@ -46,16 +46,24 @@ IConverter<Employee, EmployeeEntity>, IRestorer<Employee, EmployeeEntity>
     /// <returns>ドメインオブジェクト:Employee</returns>
     public Employee Restore(EmployeeEntity target)
     {
+        Department? department = null;
+
+        if (target.Department != null)
+        {
+            department = new Department(
+                target.Department.DeptId,
+                target.Department.DeptName
+            );
+        }
+
         var employee = new Employee(
-            /*
-            EmpId=target.
-            */
             target.EmpId,
             target.EmpName,
             target.EmpMailadress,
             target.EmpPhonenumber,
-            null
+            department
         );
+
         return employee;
     }
 }
