@@ -127,5 +127,12 @@ public static class DependencyExtension
             new TempDataStore<DeleteEmployeeViewModel>("DeleteEmployeeViewModel")
         );
         services.AddScoped<IDeleteEmployeeService, DeleteEmployeeService>();
+
+        services.AddScoped<EmployeeUpdateViewModelAdapter>();
+        services.AddScoped(
+            provider =>
+            new TempDataStore<EmployeeUpdateViewModel>("EmployeeUpdateViewModel")
+        );
+        services.AddScoped<IEmployeeUpdateService, EmployeeUpdateService>();
     }
 }

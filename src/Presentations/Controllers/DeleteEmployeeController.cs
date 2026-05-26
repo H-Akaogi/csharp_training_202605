@@ -7,21 +7,9 @@ namespace WebApp_Src.Presentations.Controllers;
 [Route("DeleteEmployee")]
 public class DeleteEmployeeController : Controller
 {
-    /// <summary>
-    /// ロガー
-    /// </summary>
     private readonly ILogger<DeleteEmployeeController> _logger;
-    /// <summary>
-    /// 社員登録サービスインターフェイス
-    /// </summary>
     private readonly IDeleteEmployeeService _deleteEmployeeService;
-    /// <summary>
-    /// 社員登録ViewModelをEmployeeに変換するアダプター
-    /// </summary>
     private readonly DeleteEmployeeViewModelAdapter _adapter;
-    /// <summary>
-    /// TempDataを通じて一時的にViewModelを保存・復元するためのクラス
-    /// </summary>
     private readonly TempDataStore<DeleteEmployeeViewModel> _empDataStore;
 
     /// <summary>

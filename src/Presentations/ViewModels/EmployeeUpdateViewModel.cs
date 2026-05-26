@@ -5,6 +5,7 @@ namespace WebApp_Src.Presentations.ViewModels;
 
 public class EmployeeUpdateViewModel
 {
+    public int EmpId { get; set; }
     /// <summary>
     /// 氏名
     /// </summary>
