@@ -24,18 +24,24 @@ public class EmployeeRepository : IEmployeeRepository
     /// <summary>
     /// ドメインモデル:社員と社員エンティティの相互変換インターフェイスの実装
     /// </summary>
-    private readonly EmployeeEntityAdapter _adapter;
+    private readonly EmployeeEntityAdapter _employeeAdapter;
+    private readonly DepartmentEntityAdapter _departmentAdapter;
 
     /// <summary>
     /// コンストラクタ
     /// </summary>
     /// <param name="context"></param>
     /// <param name="adapter"></param>
-    public EmployeeRepository(AppDbContext context, EmployeeEntityAdapter adapter)
+    public EmployeeRepository(
+    AppDbContext context,
+    EmployeeEntityAdapter employeeAdapter,
+    DepartmentEntityAdapter departmentAdapter)
     {
         _context = context;
-        _adapter = adapter;
+        _employeeAdapter = employeeAdapter;
+        _departmentAdapter = departmentAdapter;
     }
+
 
     /// <summary>
     /// 社員を永続化する
@@ -45,7 +51,7 @@ public class EmployeeRepository : IEmployeeRepository
     {
         try
         {
-            var entity = _adapter.Convert(employee);
+            var entity = _employeeAdapter.Convert(employee);
             _context.Employees.Add(entity);
             _context.SaveChanges();
         }
@@ -55,8 +61,7 @@ public class EmployeeRepository : IEmployeeRepository
                 "社員の永続化ができませんでした。", e);
         }
     }
-    // 削除
-    // ここが違そう
+
     public Employee? DeleteById(int id)
     {
         try
@@ -64,7 +69,7 @@ public class EmployeeRepository : IEmployeeRepository
             var entity = _context.Employees.Single(e => e.EmpId == id);
             _context.Employees.Remove(entity);
             _context.SaveChanges();
-            return _adapter.Restore(entity);
+            return _employeeAdapter.Restore(entity);
         }
         catch (Exception e)
         {
@@ -83,7 +88,7 @@ public class EmployeeRepository : IEmployeeRepository
             {
                 return null;
             }
-            return _adapter.Restore(result);
+            return _employeeAdapter.Restore(result);
         }
         catch (Exception e)
         {
@@ -98,7 +103,7 @@ public class EmployeeRepository : IEmployeeRepository
         {
             return null;
         }
-        return _adapter.Restore(result);
+        return _employeeAdapter.Restore(result);
     }
     public Employee? FindByPhone(string phone)
     {
@@ -107,7 +112,7 @@ public class EmployeeRepository : IEmployeeRepository
         {
             return null;
         }
-        return _adapter.Restore(result);
+        return _employeeAdapter.Restore(result);
     }
     public List<Employee> GetAll()
     {
@@ -115,7 +120,7 @@ public class EmployeeRepository : IEmployeeRepository
             .Include(e => e.Department)
             .ToList();
 
-        return entities.Select(e => _adapter.Restore(e)).ToList();
+        return entities.Select(e => _employeeAdapter.Restore(e)).ToList();
     }
 
 }
