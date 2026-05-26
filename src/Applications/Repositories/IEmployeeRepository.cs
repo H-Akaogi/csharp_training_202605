@@ -1,5 +1,4 @@
 /// Repositoryインターフェイス
-//using WebApp_Src.Presentations.ViewModels;
 using WebApp_Src.Applications.Domains;
 namespace WebApp_Src.Applications.Repositories;
 /// <summary>

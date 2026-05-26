@@ -1,6 +1,3 @@
-
-using WebApp_Src.Infrastructures.Entities;
-using WebApp_Src.Infrastructures.Context;
 using Microsoft.AspNetCore.Mvc;
 using WebApp_Src.Applications.Services;
 using WebApp_Src.Presentations.ViewModels;
@@ -26,7 +23,6 @@ public class DeleteEmployeeController : Controller
     /// TempDataを通じて一時的にViewModelを保存・復元するためのクラス
     /// </summary>
     private readonly TempDataStore<DeleteEmployeeViewModel> _empDataStore;
-    private readonly AppDbContext _context;
 
     /// <summary>
     /// コンストラクタ
@@ -35,14 +31,13 @@ public class DeleteEmployeeController : Controller
         ILogger<DeleteEmployeeController> logger,
         IDeleteEmployeeService deleteEmployeeService,
         DeleteEmployeeViewModelAdapter deleteEmployeeViewModelAdapter,
-        TempDataStore<DeleteEmployeeViewModel> empDataStore,
-        AppDbContext context)
+        TempDataStore<DeleteEmployeeViewModel> empDataStore
+        )
     {
         _logger = logger;
         _deleteEmployeeService = deleteEmployeeService;
         _adapter = deleteEmployeeViewModelAdapter;
         _empDataStore = empDataStore;
-        _context = context;
     }
     // 社員リスト横の[削除]ボタンを押下→確認画面
     [HttpGet("Confirm/{id}")]

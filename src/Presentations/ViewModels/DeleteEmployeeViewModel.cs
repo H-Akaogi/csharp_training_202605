@@ -1,9 +1,7 @@
 /// ViewModel
 ///  ViewModelは 、画面のために用意する専用のクラス
 /// 画面に表示する値や、画面から入力された値をまとめて扱う
-using WebApp_Src.Infrastructures.Entities;
 using System.ComponentModel.DataAnnotations;
-
 using Microsoft.AspNetCore.Mvc.Rendering;
 using WebApp_Src.Applications.Domains;
 namespace WebApp_Src.Presentations.ViewModels;

@@ -1,7 +1,4 @@
 /// 社員一覧コントローラ
-
-using WebApp_Src.Infrastructures.Entities;
-using WebApp_Src.Infrastructures.Context;
 using Microsoft.AspNetCore.Mvc;
 using WebApp_Src.Applications.Services;
 using WebApp_Src.Presentations.ViewModels;
@@ -28,7 +25,6 @@ public class EmployeeListController : Controller
     /// TempDataを通じて一時的にViewModelを保存・復元するためのクラス
     /// </summary>
     private readonly TempDataStore<EmployeeListViewModel> _empDataStore;
-    private readonly AppDbContext _context;
     /// <summary>
     /// コンストラクタ
     /// </summary>
@@ -36,14 +32,13 @@ public class EmployeeListController : Controller
         ILogger<EmployeeListController> logger,
         IEmployeeListService employeeListService,
         EmployeeListViewModelAdapter employeeListViewModelAdapter,
-        TempDataStore<EmployeeListViewModel> empDataStore,
-        AppDbContext context)
+        TempDataStore<EmployeeListViewModel> empDataStore
+        )
     {
         _logger = logger;
         _employeeListService = employeeListService;
         _adapter = employeeListViewModelAdapter;
         _empDataStore = empDataStore;
-        _context = context;
     }
 
     /// <summary>
