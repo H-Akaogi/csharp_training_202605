@@ -56,13 +56,7 @@ public class DepartmentUpdateController : Controller
             return View("Enter", viewModel);
         }
         _logger.LogInformation($"Confirm:{viewModel.DeptId}");
-        /*
-        if (_departmentUpdateService.Exists(viewModel.DeptName!))
-        {
-            ModelState.AddModelError(nameof(viewModel.DeptName),
-            $"{viewModel.DeptName}は既に存在します");
-            return View("Enter", viewModel);
-        }*/
+
         return View(viewModel);
     }
     /// <summary>
@@ -94,11 +88,6 @@ public class DepartmentUpdateController : Controller
         }
         _logger.LogInformation($"Complete/Restore:{viewModel}");
 
-
-
-        /// 
-        /// ここから先にいかない
-        /// 
         // DepartmentUpdateFormをドメインモデル:Departmentに変換する
         var department = _adapter.Restore(viewModel);
         _logger.LogInformation($"Complete/Restore/Department.Id = {department.Id}");

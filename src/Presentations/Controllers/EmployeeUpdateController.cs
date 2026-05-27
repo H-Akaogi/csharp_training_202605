@@ -31,6 +31,7 @@ public class EmployeeUpdateController : Controller
     [HttpGet("Enter/{id}")]
     public IActionResult Enter(int id)
     {
+        _logger.LogInformation($"Enter:{id}");
         var employee = _employeeUpdateService.UpdateById(id);
         var viewModel = new EmployeeUpdateViewModel
         {
@@ -41,6 +42,7 @@ public class EmployeeUpdateController : Controller
             DeptId = employee.Department?.Id,
             DeptName = employee.Department?.Name
         };
+        _logger.LogInformation($"Controller Enter.Id = {id}");
         PopulateDepartments(viewModel);
         viewModel.DeptName = employee.Department?.Name;
         return View(viewModel);
@@ -54,6 +56,7 @@ public class EmployeeUpdateController : Controller
     [HttpPost("Confirm")]
     public IActionResult Confirm(EmployeeUpdateViewModel viewModel)
     {
+        _logger.LogInformation($"Update:{viewModel.EmpId}");
         // バリデーションチェック
         if (!ModelState.IsValid) // バリデーションエラーあり
         {
@@ -67,6 +70,7 @@ public class EmployeeUpdateController : Controller
         _logger.LogInformation($"部門Id:{viewModel.DeptId ?? 0}の部門を取得する");
         // ViewModelに部門名を設定する
         viewModel.DeptName = department.Name;
+        _logger.LogInformation($"Controller Enter.Id = {viewModel.EmpId}");
         // 確認画面を表示する
         return View(viewModel);
     }
@@ -77,6 +81,7 @@ public class EmployeeUpdateController : Controller
     [HttpPost("Update")]
     public IActionResult Update(EmployeeUpdateViewModel viewModel)
     {
+        _logger.LogInformation($"Update/beforeSave.EmpId = {viewModel?.EmpId}");
         // EmployeeUpdateViewModelをシリアライズして、TempDataに保存する
         _empDataStore.Save(this, viewModel);
         // 登録処理GETアクションメソッドにリダイレクトする
@@ -90,15 +95,21 @@ public class EmployeeUpdateController : Controller
         EmployeeUpdateViewModel? viewModel = null;
         // TempDataからEmployeeUpdateViewModelを取得する
         viewModel = _empDataStore.Load(this);
+        _logger.LogInformation($"Complete/Load.EmpId = {viewModel?.EmpId}");
         if (viewModel == null)
         {
             // データが存在しない場合、入力画面にリダイレクト
-            return RedirectToAction("ShowEmp");
+            return RedirectToAction("Enter");
         }
         // EmployeeUpdateFormをドメインモデル:Employeeに変換する
         var employee = _adapter.Restore(viewModel!);
+        _logger.LogInformation($"Controller Department.employee = {viewModel}");
+        _logger.LogInformation($"Controller Department.employee = {employee}");
         // 新しい社員を登録する
         _employeeUpdateService.Update(employee);
+        _logger.LogInformation($"Controller Department.EmpId = {employee.EmpId}");
+        _logger.LogInformation($"Controller Department.DeptId = {employee.Department?.Id}");
+        _logger.LogInformation($"Controller Department.employee = {employee}");
         return View(viewModel);
     }
 

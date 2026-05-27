@@ -130,8 +130,14 @@ public class EmployeeRepository : IEmployeeRepository
     {
         try
         {
-            var entity = _employeeAdapter.Convert(employee);
-            _context.Employees.Update(entity);
+            var entity = _context.Employees
+                .FirstOrDefault(e => e.EmpId == employee.EmpId!.Value);
+
+            entity!.EmpName = employee.EmpName!;
+            entity!.EmpMailadress = employee.EmpMailadress!;
+            entity!.EmpPhonenumber = employee.EmpPhonenumber!;
+            entity!.DeptId = employee.Department?.Id;
+
             _context.SaveChanges();
         }
         catch (Exception e)

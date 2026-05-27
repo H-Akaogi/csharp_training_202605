@@ -120,17 +120,5 @@ public class DepartmentRepository : IDepartmentRepository
             throw new InternalException(
                 "部門の変更ができませんでした。", e);
         }
-        /*
-        Console.WriteLine($"Repository Received Id = {department.Id}");
-
-        var entity = _context.Departments.Find(department.Id);
-        if (entity == null)
-            throw new InternalException("部門が見つかりません");
-
-        entity.DeptName = department.Name!;
-        Console.WriteLine($"Repository/Update/afterSave:{department.Id}");
-
-        _context.SaveChanges();
-        */
     }
 }

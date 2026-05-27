@@ -39,6 +39,7 @@
                     @*asp-itemsはSelectListItemのリストを受け取る*@
                     <select asp-for="DeptId" asp-items="Model.Departments" class="form-control"></select>
                 </div>
+                <input type="hidden" asp-for="EmpId" />
                 <div class="text-center">
                     <button type="submit" formaction="@Url.Action("Confirm", "EmployeeUpdate")" formmethod="post"
                             class="btn btn-primary">完了</button>
