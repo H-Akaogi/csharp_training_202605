@@ -146,5 +146,15 @@ public class EmployeeRepository : IEmployeeRepository
                 "社員の永続化ができませんでした。", e);
         }
     }
+    //　追加
+    public bool FindByDepartmentId(int id)
+    {
+        var result = _context.Employees.FirstOrDefault(e => e.DeptId == id);
+        if (result == null)
+        {
+            return false;
+        }
+        return true;
+    }
 }
 

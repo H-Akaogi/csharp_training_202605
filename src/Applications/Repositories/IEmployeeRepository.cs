@@ -20,4 +20,5 @@ public interface IEmployeeRepository
     Employee? DeleteById(int id);
     Employee? FindById(int id);
     void Update(Employee employee);
+    bool FindByDepartmentId(int id);
 }

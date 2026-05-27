@@ -121,4 +121,20 @@ public class DepartmentRepository : IDepartmentRepository
                 "部門の変更ができませんでした。", e);
         }
     }
+    public Department? DeleteById(int id)
+    {
+        try
+        {
+            var entity = _context.Departments.Single(d => d.DeptId == id);
+            _context.Departments.Remove(entity);
+            _context.SaveChanges();
+            return _adapter.Restore(entity);
+        }
+        catch (Exception e)
+        {
+            throw new InternalException(
+                "部門の削除ができませんでした。", e);
+        }
+    }
+
 }
