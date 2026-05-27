@@ -4,5 +4,35 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<div class="text-center">
+
+    <section class="system-card">
+        <h2 style="margin-bottom:20px;">社員管理</h2>
+
+        <div class="button-group" style="margin-bottom:50px;">
+            <a class="btn btn-lg btn-primary" asp-controller="EmployeeList" asp-action="ShowEmp">
+                社員一覧
+            </a>
+
+            <a class="btn btn-lg btn-primary" asp-controller="EmployeeRegister" asp-action="Enter">
+                社員登録
+            </a>
+        </div>
+    </section>
+
+    <section class="system-card">
+        <h2 style="margin-bottom:20px;">部門管理</h2>
+
+        <div class="button-group" style="margin-bottom:50px;">
+            <a class="btn btn-lg btn-primary" asp-controller="DepartmentList" asp-action="ShowDept">
+                部門一覧
+            </a>
+
+            <a class="btn btn-lg btn-primary" asp-controller="DepartmentRegister" asp-action="Enter">
+                部門登録
+            </a>
+        </div>
+    </section>
+
 </div>

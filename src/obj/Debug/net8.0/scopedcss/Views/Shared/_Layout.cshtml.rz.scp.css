@@ -17,7 +17,8 @@ a[b-d4ym71ndqi] {
   border-color: #1861ac;
 }
 
-.nav-pills .nav-link.active[b-d4ym71ndqi], .nav-pills .show > .nav-link[b-d4ym71ndqi] {
+.nav-pills .nav-link.active[b-d4ym71ndqi],
+.nav-pills .show>.nav-link[b-d4ym71ndqi] {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
@@ -26,6 +27,7 @@ a[b-d4ym71ndqi] {
 .border-top[b-d4ym71ndqi] {
   border-top: 1px solid #e5e5e5;
 }
+
 .border-bottom[b-d4ym71ndqi] {
   border-bottom: 1px solid #e5e5e5;
 }
@@ -45,4 +47,39 @@ button.accept-policy[b-d4ym71ndqi] {
   width: 100%;
   white-space: nowrap;
   line-height: 60px;
+}
+
+.about-system[b-d4ym71ndqi] {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 60px;
+  margin-top: 40px;
+  text-align: left;
+}
+
+.system-card[b-d4ym71ndqi] {
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  padding: 30px;
+  width: 360px;
+  /* ←重要：100%禁止 */
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.system-card h2[b-d4ym71ndqi] {
+  margin-bottom: 20px;
+}
+
+.button-group[b-d4ym71ndqi] {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.button-group .btn[b-d4ym71ndqi] {
+  padding: 18px;
+  font-size: 18px;
+  border-radius: 12px;
 }
