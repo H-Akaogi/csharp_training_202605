@@ -12,7 +12,7 @@
             <table class="table table-hover">
                 <tbody>
                     <tr>
-                        @*電話番号*@
+                        @*部門*@
                         <td class="fw-bold">@Html.DisplayNameFor(m => m.DeptName)</td>
                         <td>@Html.DisplayFor(m => m.DeptName)</td>
                     </tr>
@@ -27,7 +27,7 @@
                 @*formaction/formmethod ボタンごとに送信先を変える*@
                 @*同じフォーム内で[登録]と[戻る]を分岐できる*@
                 <div class="text-center mt-4">
-                    <button type="submit" formaction="@Url.Action("Complete", "DepartmentUpdate")" formmethod="post"
+                    <button type="submit" formaction="@Url.Action("Update", "DepartmentUpdate")" formmethod="post"
                             class="btn btn-primary">登録</button>
                     <button type="submit" formaction="@Url.Action("Back", "DepartmentUpdate")" formmethod="post"
                             class="btn btn-secondary">戻る</button>

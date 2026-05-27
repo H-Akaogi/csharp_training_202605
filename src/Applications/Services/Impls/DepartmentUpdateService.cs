@@ -34,11 +34,13 @@ public class DepartmentUpdateService : IDepartmentUpdateService
     {
         try
         {
+            Console.WriteLine($"Service/Update/first: {department.Id}");
             // トランザクションの開始
             _context.Database.BeginTransaction();
             //Exists(department.Name!);
             // 部門の登録
             _departmentRepository.Update(department);
+            Console.WriteLine($"Service/Update: {department.Id}");
             // トランザクションのコミット
             _context.Database.CommitTransaction();
         }

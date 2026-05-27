@@ -65,6 +65,7 @@ public class DepartmentRepository : IDepartmentRepository
         try
         {
             var result = _context.Departments.FirstOrDefault(d => d.DeptId == id);
+            Console.WriteLine($"Repository Received Id = {id}");
             if (result == null)
             {
                 return null;
@@ -105,10 +106,24 @@ public class DepartmentRepository : IDepartmentRepository
     }
     public void Update(Department department)
     {
+        try
+        {
+            var entity = _context.Departments
+                .FirstOrDefault(d => d.DeptId == department.Id!.Value);
+
+            entity!.DeptName = department.Name!;
+            Console.WriteLine($"Repository/Update/afterSave:{department.Id}");
+            _context.SaveChanges();
+        }
+        catch (Exception e)
+        {
+            throw new InternalException(
+                "部門の変更ができませんでした。", e);
+        }
+        /*
         Console.WriteLine($"Repository Received Id = {department.Id}");
 
         var entity = _context.Departments.Find(department.Id);
-
         if (entity == null)
             throw new InternalException("部門が見つかりません");
 
@@ -116,5 +131,6 @@ public class DepartmentRepository : IDepartmentRepository
         Console.WriteLine($"Repository/Update/afterSave:{department.Id}");
 
         _context.SaveChanges();
+        */
     }
 }
