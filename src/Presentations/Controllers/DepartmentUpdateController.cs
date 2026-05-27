@@ -29,14 +29,15 @@ public class DepartmentUpdateController : Controller
     [HttpGet("Enter/{id}")]
     public IActionResult Enter(int id)
     {
+        _logger.LogInformation($"Enter:{id}");
         var department = _departmentUpdateService.UpdateById(id);
         var viewModel = new DepartmentUpdateViewModel
         {
             DeptId = id,
             DeptName = department?.Name
         };
-        _logger.LogInformation($"【部門更新Enter】Id: {id}", viewModel!.ToString());
-
+        _logger.LogInformation($"Enter: {id}", viewModel!.ToString());
+        _logger.LogInformation($"Enter/ViewModel:{id}");
         return View(viewModel);
 
     }
@@ -51,6 +52,7 @@ public class DepartmentUpdateController : Controller
     [HttpPost("Update")]
     public IActionResult Update(DepartmentUpdateViewModel viewModel)
     {
+        _logger.LogInformation($"Update:{viewModel.DeptId}");
         // バリデーションチェック
         if (!ModelState.IsValid) // バリデーションエラーあり
         {
@@ -64,6 +66,7 @@ public class DepartmentUpdateController : Controller
             return View("Enter", viewModel);
         }
         // EmployeeRegisterViewModelをシリアライズして、TempDataに保存する
+        _logger.LogInformation($"Update/beforeSave:{viewModel.DeptId}");
         _deptDataStore.Save(this, viewModel);
         // 登録処理GETアクションメソッドにリダイレクトする
         return View(viewModel);
@@ -73,9 +76,9 @@ public class DepartmentUpdateController : Controller
     [HttpPost("Complete")]
     public IActionResult Complete()
     {
-        DepartmentUpdateViewModel? viewModel = null;
         // TempDataからEmployeeRegisterViewModelを取得する
-        viewModel = _deptDataStore.Load(this);
+        var viewModel = _deptDataStore.Load(this);
+        _logger.LogInformation($"Complete/Load:{viewModel?.DeptId}");
         if (viewModel == null)
         {
             // データが存在しない場合、入力画面にリダイレクト
@@ -83,8 +86,10 @@ public class DepartmentUpdateController : Controller
         }
         // EmployeeRegisterFormをドメインモデル:Employeeに変換する
         var department = _adapter.Restore(viewModel!);
+        _logger.LogInformation($"Complete/.Restore:{viewModel?.DeptId}");
         // 新しい社員を登録する
         _departmentUpdateService.Update(department);
+        _logger.LogInformation($"Complete/.Update:{department?.Id}");
         return View(viewModel);
     }
 

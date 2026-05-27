@@ -17,6 +17,7 @@
                     <input asp-for="DeptName" class="form-control" />
                     @*バリデーション(ModelState)エラーを表示する*@
                     <span asp-validation-for="DeptName" class="text-danger"></span>
+                    <input type="hidden" asp-for="DeptId" formmethod="post" />
                 </div>
                 <div class="text-center">
                     <button type="submit" formaction="@Url.Action("Update", "DepartmentUpdate")" formmethod="post"
