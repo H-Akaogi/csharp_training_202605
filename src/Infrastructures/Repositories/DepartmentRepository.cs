@@ -107,9 +107,11 @@ public class DepartmentRepository : IDepartmentRepository
     {
         try
         {
+            Console.WriteLine($"Repository/Update/beforeSave:{department.Id}");
             var entity = _adapter.Convert(department);
             _context.Departments.Update(entity);
             _context.SaveChanges();
+            Console.WriteLine($"Repository/Update/afterSave:{department.Id}");
 
         }
         catch (Exception e)
