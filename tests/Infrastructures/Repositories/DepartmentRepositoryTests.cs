@@ -114,4 +114,22 @@ public class DepartmentRepositoryTests
         var created = _context.Departments;
         IsNotNull(created);
     }
+    [TestMethod]
+    public void Update_WhenIdCorrect()
+    {
+        // Arrange
+        var beforeCount = _context.Departments.Count();
+
+        var expected = new Department(2, "製造部");
+
+        // Act
+        _repository.Update(expected);
+
+        // Assert
+        var afterCount = _context.Departments.Count();
+        AreEqual(beforeCount, afterCount);
+
+        var updated = _context.Departments;
+        IsNotNull(updated);
+    }
 }

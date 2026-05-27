@@ -185,6 +185,18 @@ public class EmployeeRepositoryTests
         IsTrue(actual.Any(c => c.Equals(new Employee(7, "山下孝輔", "yamasitakousuke@example.com", "090-0000-0007", new Department(5, "営業部")))));
         IsTrue(actual.Any(c => c.Equals(new Employee(8, "渡辺大輔", "watanabedaisuke@example.com", "090-0000-0008", new Department(4, "開発部")))));
     }
+    [TestMethod] // 正常系
+    public void Update_WhenIdCorrect()
+    {
+        // Arrange
+        var beforeCount = _context.Employees.Count();
 
-
+        // Act
+        var employee = new Employee(2, "伊藤 万紀子", "makiko_ito@example.co.jp", "090-0672-5822", new Department(2, "経理部"));
+        _repository.Update(employee);
+        // Assert
+        var afterCount = _context.Employees.Count();
+        AreEqual(beforeCount, afterCount);
+        IsNotNull(employee);
+    }
 }
