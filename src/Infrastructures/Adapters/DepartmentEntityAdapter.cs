@@ -45,4 +45,5 @@ IConverter<Department, DepartmentEntity>, IRestorer<Department, DepartmentEntity
         var department = new Department(target.DeptId, target.DeptName!);
         return department;
     }
+
 }

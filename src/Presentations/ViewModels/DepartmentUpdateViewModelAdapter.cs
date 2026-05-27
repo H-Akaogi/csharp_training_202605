@@ -7,7 +7,7 @@ public class DepartmentUpdateViewModelAdapter : IRestorer<Department, Department
     public Department Restore(DepartmentUpdateViewModel target)
     {
         // Department(部門)を作成する
-        var department = new Department(target.DeptName);
+        var department = new Department(target.DeptId, target.DeptName);
         return department;
     }
 }

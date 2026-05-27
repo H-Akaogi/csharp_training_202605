@@ -94,9 +94,13 @@ public class DepartmentUpdateController : Controller
         }
         _logger.LogInformation($"Complete/Restore:{viewModel}");
 
-        // EmployeeRegisterFormをドメインモデル:Employeeに変換する
-        var department = _adapter.Restore(viewModel);
 
+
+        /// 
+        /// ここから先にいかない
+        /// 
+        // DepartmentUpdateFormをドメインモデル:Departmentに変換する
+        var department = _adapter.Restore(viewModel);
         _logger.LogInformation($"Complete/Restore/Department.Id = {department.Id}");
 
         // 新しい社員を登録する

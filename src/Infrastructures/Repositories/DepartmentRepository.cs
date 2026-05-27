@@ -112,7 +112,7 @@ public class DepartmentRepository : IDepartmentRepository
                 .FirstOrDefault(d => d.DeptId == department.Id!.Value);
 
             entity!.DeptName = department.Name!;
-            Console.WriteLine($"Repository/Update/afterSave:{department.Id}");
+            Console.WriteLine($"Repository/Update/afterSave:{department.Id}");// ログ
             _context.SaveChanges();
         }
         catch (Exception e)
