@@ -90,7 +90,7 @@ public class DepartmentUpdateController : Controller
         // 新しい社員を登録する
 
         _departmentUpdateService.Update(department);
-        _logger.LogInformation($"Complete/.Update:{department?.Id}");
+        _logger.LogInformation($"Controller Department.Id = {department.Id}");
         return View(viewModel);
     }
 

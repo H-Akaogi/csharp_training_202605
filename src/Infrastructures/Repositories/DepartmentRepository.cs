@@ -103,6 +103,7 @@ public class DepartmentRepository : IDepartmentRepository
                 "部門の永続化ができませんでした。", e);
         }
     }
+    /*
     public void Update(Department department)
     {
         try
@@ -119,5 +120,19 @@ public class DepartmentRepository : IDepartmentRepository
             throw new InternalException(
                 "部門の永続化ができませんでした。", e);
         }
+    }*/
+    public void Update(Department department)
+    {
+        Console.WriteLine("Repository Received Id = {0}", department.Id);
+
+        var entity = _context.Departments.Find(department.Id);
+
+        if (entity == null)
+            throw new InternalException("部門が見つかりません");
+
+        entity.DeptName = department.Name!;
+        Console.WriteLine($"Repository/Update/afterSave:{department.Id}");
+
+        _context.SaveChanges();
     }
 }
