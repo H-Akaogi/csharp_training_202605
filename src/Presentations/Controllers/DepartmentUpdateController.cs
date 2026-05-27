@@ -88,7 +88,7 @@ public class DepartmentUpdateController : Controller
         var department = _adapter.Restore(viewModel!);
         _logger.LogInformation($"Complete/.Restore:{viewModel?.DeptId}");
         // 新しい社員を登録する
-
+        _logger.LogInformation($"VIEWMODEL ID = {viewModel?.DeptId}");
         _departmentUpdateService.Update(department);
         _logger.LogInformation($"Controller Department.Id = {department.Id}");
         return View(viewModel);

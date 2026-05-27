@@ -2,7 +2,7 @@
 /// (1) ドメインオブジェクト→Entity
 /// (2) Entity→ドメインオブジェクト
 /// Repository⇔Entity間の変換操作
-
+using WebApp_Src.Presentations.ViewModels;
 using WebApp_Src.Applications.Adapters;
 using WebApp_Src.Applications.Domains;
 using WebApp_Src.Infrastructures.Entities;
@@ -44,5 +44,9 @@ IConverter<Department, DepartmentEntity>, IRestorer<Department, DepartmentEntity
     {
         var department = new Department(target.DeptId, target.DeptName!);
         return department;
+    }
+    public Department Restore(DepartmentUpdateViewModel target)
+    {
+        return new Department(target.DeptId, target.DeptName!);
     }
 }
