@@ -23,6 +23,8 @@
                         <th>
                             部門名
                         </th>
+                        <th>更新</th>
+                        <th>削除</th>
                     </tr>
                 </thread>
                 <tbody>
@@ -34,6 +36,18 @@
                             <td>@dept.Value</td>
                             @*右列はテキスト(DeptName)*@
                             <td>@dept.Text</td>
+                            <td>
+                                <a class="btn btn-primary" asp-controller="DepartmentUpdate" asp-action="Enter"
+                                   asp-route-id="@dept.Value">
+                                    更新
+                                </a>
+                            </td>
+                            <td>
+                                <a class="btn btn-primary" asp-controller="*" asp-action="Confirm"
+                                   asp-route-id="@dept.Value">
+                                    削除
+                                </a>
+                            </td>
                         </tr>
                     }
                 </tbody>

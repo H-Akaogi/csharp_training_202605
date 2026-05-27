@@ -1,0 +1,33 @@
+@*Complete.cshtml(社員登録の確認画面)*@
+@using WebApp_Src.Presentations.ViewModels
+@model DepartmentUpdateViewModel;
+@{
+    ViewData["Title"] = "部門更新(完了)";
+}
+<h2 class="text-center mt-4">@ViewData["Title"]</h2>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-sm-8 text-center">
+            <div class="alert alert-success" role="alert">
+                部門情報の更新が完了しました。
+            </div>
+            <table class="table table-hover">
+                <tbody>
+                    <tr>
+                        @*部門*@
+                        <td class="fw-bold">@Html.DisplayNameFor(m => m.DeptName)</td>
+                        <td>@Html.DisplayFor(m => m.DeptName)</td>
+                    </tr>
+                </tbody>
+            </table>
+            @*一覧画面に戻る*@
+            <a asp-action="ShowDept" asp-controller="DepartmentList" class="btn btn-primary mt-3">
+                部門一覧に戻る
+            </a>
+            @*メニューに戻る*@
+            <a asp-action="Index" asp-controller="Home" class="btn btn-secondary mt-3 ms-2">
+                メニューに戻る
+            </a>
+        </div>
+    </div>
+</div>

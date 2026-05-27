@@ -22,4 +22,5 @@ public interface IDepartmentRepository
     /// 部門を永続化する
     /// </summary>
     void Create(Department department);
+    void Update(Department department);
 }

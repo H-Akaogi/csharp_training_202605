@@ -1,0 +1,38 @@
+@*Confirm.cshtml(社員登録の確認画面)*@
+
+@using WebApp_Src.Presentations.ViewModels
+@model DepartmentUpdateViewModel;
+@{
+    ViewData["Title"] = "部門更新(確認)";
+}
+<h2 class="text-center mt-4">@ViewData["Title"]</h2>
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-sm-8">
+            <table class="table table-hover">
+                <tbody>
+                    <tr>
+                        @*電話番号*@
+                        <td class="fw-bold">@Html.DisplayNameFor(m => m.DeptName)</td>
+                        <td>@Html.DisplayFor(m => m.DeptName)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <form>
+                @*POSTリクエスト(Update/Back)に値を渡すためにhidden属性を使う*@
+                @*これがないと、次の画面で値が消えてしまう*@
+                <input type="hidden" asp-for="DeptId" formmethod="post" />
+                <input type="hidden" asp-for="DeptName" formmethod="post" />
+                @*formaction/formmethod ボタンごとに送信先を変える*@
+                @*同じフォーム内で[登録]と[戻る]を分岐できる*@
+                <div class="text-center mt-4">
+                    <button type="submit" formaction="@Url.Action("Complete", "DepartmentUpdate")" formmethod="post"
+                            class="btn btn-primary">登録</button>
+                    <button type="submit" formaction="@Url.Action("Back", "DepartmentUpdate")" formmethod="post"
+                            class="btn btn-secondary">戻る</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

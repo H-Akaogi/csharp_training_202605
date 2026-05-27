@@ -77,7 +77,7 @@ public class EmployeeUpdateController : Controller
     [HttpPost("Update")]
     public IActionResult Update(EmployeeUpdateViewModel viewModel)
     {
-        // EmployeeRegisterViewModelをシリアライズして、TempDataに保存する
+        // EmployeeUpdateViewModelをシリアライズして、TempDataに保存する
         _empDataStore.Save(this, viewModel);
         // 登録処理GETアクションメソッドにリダイレクトする
         return RedirectToAction("Complete");
@@ -88,14 +88,14 @@ public class EmployeeUpdateController : Controller
     public IActionResult Complete()
     {
         EmployeeUpdateViewModel? viewModel = null;
-        // TempDataからEmployeeRegisterViewModelを取得する
+        // TempDataからEmployeeUpdateViewModelを取得する
         viewModel = _empDataStore.Load(this);
         if (viewModel == null)
         {
             // データが存在しない場合、入力画面にリダイレクト
-            return RedirectToAction("Enter");
+            return RedirectToAction("ShowEmp");
         }
-        // EmployeeRegisterFormをドメインモデル:Employeeに変換する
+        // EmployeeUpdateFormをドメインモデル:Employeeに変換する
         var employee = _adapter.Restore(viewModel!);
         // 新しい社員を登録する
         _employeeUpdateService.Update(employee);
@@ -110,7 +110,7 @@ public class EmployeeUpdateController : Controller
     public IActionResult Back(EmployeeUpdateViewModel viewModel)
     {
         _logger.LogInformation("[戻る]ボタンクリック:{0}", viewModel!.ToString());
-        // EmployeeRegisterViewModelをシリアライズして、TempDataに保存する
+        // EmployeeUpdateViewModelをシリアライズして、TempDataに保存する
         _empDataStore.Save(this, viewModel);
         // 入力画面を出力するアクションメソッドにリダイレクトする
         return RedirectToAction("Enter");
@@ -123,7 +123,7 @@ public class EmployeeUpdateController : Controller
     {
         // 社員登録サービスから部門一覧を取得する
         var departments = _employeeUpdateService.GetDepartments();
-        // 部門一覧をEmployeeRegisterViewModelに登録する
+        // 部門一覧をEmployeeUpdateViewModelに登録する
         viewModel.SetDepartments(departments);
         _logger.LogInformation("部門リストを設定");
     }

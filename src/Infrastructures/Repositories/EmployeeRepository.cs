@@ -121,7 +121,9 @@ public class EmployeeRepository : IEmployeeRepository
             .Include(e => e.Department)
             .ToList();
 
-        return entities.Select(e => _employeeAdapter.Restore(e)).ToList();
+        return entities
+            .Select(e => _employeeAdapter.Restore(e))
+            .ToList();
     }
 
     public void Update(Employee employee)

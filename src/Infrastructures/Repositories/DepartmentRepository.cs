@@ -7,6 +7,7 @@
 
 using WebApp_Src.Infrastructures.Context;
 using WebApp_Src.Applications.Domains;
+using WebApp_Src.Infrastructures.Entities;
 using WebApp_Src.Applications.Repositories;
 using WebApp_Src.Infrastructures.Adapters;
 using WebApp_Src.Exceptions;
@@ -95,6 +96,21 @@ public class DepartmentRepository : IDepartmentRepository
             var entity = _adapter.Convert(department);
             _context.Departments.Add(entity);
             _context.SaveChanges();
+        }
+        catch (Exception e)
+        {
+            throw new InternalException(
+                "部門の永続化ができませんでした。", e);
+        }
+    }
+    public void Update(Department department)
+    {
+        try
+        {
+            var entity = _adapter.Convert(department);
+            _context.Departments.Update(entity);
+            _context.SaveChanges();
+
         }
         catch (Exception e)
         {

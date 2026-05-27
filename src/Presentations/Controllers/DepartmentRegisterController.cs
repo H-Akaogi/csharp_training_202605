@@ -11,21 +11,9 @@ namespace WebApp_Src.Presentations.Controllers;
 [Route("DepartmentRegister")]
 public class DepartmentRegisterController : Controller
 {
-    /// <summary>
-    /// ロガー
-    /// </summary>
     private readonly ILogger<DepartmentRegisterController> _logger;
-    /// <summary>
-    /// サービスインターフェイス
-    /// </summary>
     private readonly IDepartmentRegisterService _departmentRegisterService;
-    /// <summary>
-    /// ViewModelをDepartmentに変換するアダプター
-    /// </summary>
     private readonly DepartmentRegisterViewModelAdapter _adapter;
-    /// <summary>
-    /// TempDataを通じて一時的にViewModelを保存・復元するためのクラス
-    /// </summary>
     private readonly TempDataStore<DepartmentRegisterViewModel> _deptDataStore;
 
     /// <summary>

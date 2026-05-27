@@ -38,6 +38,7 @@
             <form>
                 @*POSTリクエスト(Register/Back)に値を渡すためにhidden属性を使う*@
                 @*これがないと、次の画面で値が消えてしまう*@
+                <input type="hidden" asp-for="EmpId" />
                 <input type="hidden" asp-for="EmpName" />
                 <input type="hidden" asp-for="EmpMailadress" />
                 <input type="hidden" asp-for="EmpPhonenumber" />

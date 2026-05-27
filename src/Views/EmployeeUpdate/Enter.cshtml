@@ -12,7 +12,7 @@
     <div class="row justify-content-center">
         <div class="col-md-4 col-sm-6">
             @* 送信先はControllerのConfirm()、POSTは入力値を送信する*@
-            <form asp-action="Confirm" asp-controller="EmployeeRegister" method="post">
+            <form asp-action="Confirm" asp-controller="EmployeeUpdate" method="post">
                 <div class="mb-3">
                     @* Tag Helperがname属性やid属性を自動生成 Model Bindingに必要なHTMLが作成される*@
                     <label asp-for="EmpName" class="form-label"></label>

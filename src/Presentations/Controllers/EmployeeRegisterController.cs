@@ -19,22 +19,13 @@ public class EmployeeRegisterController : Controller
     /// 社員登録サービスインターフェイス
     /// </summary>
     private readonly IEmployeeRegisterService _employeeRegisterService;
-    /// <summary>
-    /// 社員登録ViewModelをEmployeeに変換するアダプター
-    /// </summary>
     private readonly EmployeeRegisterViewModelAdapter _adapter;
-    /// <summary>
-    /// TempDataを通じて一時的にViewModelを保存・復元するためのクラス
-    /// </summary>
+
     private readonly TempDataStore<EmployeeRegisterViewModel> _empDataStore;
 
     /// <summary>
     /// コンストラクタ
     /// </summary>
-    /// <param name="logger">ロガー</param>
-    /// <param name="employeeRegisterService">社員登録サービスインターフェイス</param>
-    /// <param name="employeeRegisterViewModelAdapter">社員登録ViewModelをEmployeeに変換するアダプター</param>
-    /// <param name="empDataStore">TempDataを通じて一時的にViewModelを保存・復元するためのクラス</param>
     public EmployeeRegisterController(
         ILogger<EmployeeRegisterController> logger,
         IEmployeeRegisterService employeeRegisterService,
