@@ -36,7 +36,7 @@ public class DeleteDepartmentService : IDeleteDepartmentService
             // トランザクションの開始
             _context.Database.BeginTransaction();
             // 社員の登録
-            _departmentRepository.DeleteById(id);
+            //_departmentRepository.DeleteById(id);
             // トランザクションのコミット
             _context.Database.CommitTransaction();
         }
